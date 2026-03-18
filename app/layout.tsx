@@ -1,0 +1,33 @@
+import type { Metadata } from "next";
+import "./globals.css";
+import CursorWrapper from "@/components/CursorWrapper";
+import Navbar from "@/components/Navbar";
+import SmoothScroll from "@/components/SmoothScroll";
+import { GeistSans } from "geist/font/sans";
+import { GeistMono } from "geist/font/mono";
+
+export const metadata: Metadata = {
+  title: "Rajesh Kanna | Portfolio",
+  description: "Full Stack Developer Portfolio",
+};
+
+export default function RootLayout({
+  children,
+}: Readonly<{
+  children: React.ReactNode;
+}>) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body
+        className={`${GeistSans.variable} ${GeistMono.variable} antialiased font-sans`}
+        suppressHydrationWarning
+      >
+        <SmoothScroll>
+          <CursorWrapper />
+          <Navbar />
+          {children}
+        </SmoothScroll>
+      </body>
+    </html>
+  );
+}
