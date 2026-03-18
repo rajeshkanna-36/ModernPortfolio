@@ -52,7 +52,7 @@ export default function InstagramPostCard({ className = "" }: InstagramPostCardP
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative w-[320px] sm:w-[350px] ${className}`}
+      className={`relative w-full max-w-[320px] sm:max-w-[350px] ${className}`}
       onHoverStart={() => setIsHovered(true)}
       onHoverEnd={() => setIsHovered(false)}
       onMouseEnter={() => setIsHovered(true)}

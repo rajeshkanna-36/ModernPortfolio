@@ -54,7 +54,7 @@ export default function ScrollTextReveal({
     <div ref={containerRef} className={className}>
       <p
         style={{
-          fontSize: "48px",
+          fontSize: "clamp(28px, 6.5vw, 48px)",
           fontWeight: 600,
           lineHeight: 1.2,
           letterSpacing: "-0.03em",

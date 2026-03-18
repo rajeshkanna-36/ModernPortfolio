@@ -38,7 +38,7 @@ export default function HeroSection() {
           </div>
 
           {/* Invisible placeholder for dimensions */}
-          <div className="text-6xl sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] opacity-0 select-none pointer-events-none p-5 md:p-8 whitespace-nowrap">
+          <div className="text-[11.5vw] sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] opacity-0 select-none pointer-events-none p-5 md:p-8 whitespace-nowrap">
             FULL STACK<br />DEVELOPER
           </div>
 
@@ -50,7 +50,7 @@ export default function HeroSection() {
             className="absolute inset-0 z-10 overflow-visible"
           >
             <div className="absolute inset-0 bg-[#3b82f6]/5 border-[4px] border-[#3b82f6]/40 p-5 md:p-8 flex flex-col justify-center">
-              <div className="text-6xl sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] text-black whitespace-nowrap">
+              <div className="text-[11.5vw] sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] text-black whitespace-nowrap">
                 {/* LINE 1: FULL STACK */}
                 <div className="flex items-center">
                   <span>FULL ST</span>

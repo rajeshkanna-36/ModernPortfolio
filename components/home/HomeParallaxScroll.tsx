@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useSpring, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { useRef, useEffect, useState } from "react";
 
 /* ── Floating parallax shapes ── */
 const SHAPES = [
@@ -95,7 +95,15 @@ type HomeParallaxScrollProps = {
 };
 
 export default function HomeParallaxScroll({ hero, next }: HomeParallaxScrollProps) {
+  const [isMobile, setIsMobile] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const checkMobile = () => setIsMobile(window.innerWidth < 768);
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
 
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -103,12 +111,15 @@ export default function HomeParallaxScroll({ hero, next }: HomeParallaxScrollPro
   });
 
   const smooth = useSpring(scrollYProgress, { stiffness: 100, damping: 30, mass: 0.3 });
+  
+  // Use raw progress on mobile to avoid 1:1 touch scroll jitter, smooth on desktop
+  const activeProgress = isMobile ? scrollYProgress : smooth;
 
   // Hero cinematic pull-away
-  const heroScale = useTransform(smooth, [0, 1], [1, 0.92]);
-  const heroOpacity = useTransform(smooth, [0, 0.6, 1], [1, 0.6, 0]);
-  const heroBlur = useTransform(smooth, [0, 1], [0, 6]);
-  const heroY = useTransform(smooth, [0, 1], [0, -40]);
+  const heroScale = useTransform(activeProgress, [0, 1], [1, 0.92]);
+  const heroOpacity = useTransform(activeProgress, [0, 0.6, 1], [1, 0.6, 0]);
+  const heroBlur = useTransform(activeProgress, [0, 1], [0, 6]);
+  const heroY = useTransform(activeProgress, [0, 1], [0, -40]);
 
   return (
     <div ref={containerRef} className="relative">
@@ -119,8 +130,8 @@ export default function HomeParallaxScroll({ hero, next }: HomeParallaxScrollPro
           scale: heroScale,
           opacity: heroOpacity,
           y: heroY,
-          filter: useTransform(heroBlur, (v) => `blur(${v}px)`),
-          willChange: "transform, opacity, filter",
+          filter: useTransform(heroBlur, (v) => isMobile ? "none" : `blur(${v}px)`),
+          willChange: "transform, opacity",
         }}
       >
         {hero}
@@ -129,7 +140,7 @@ export default function HomeParallaxScroll({ hero, next }: HomeParallaxScrollPro
       {/* Floating parallax shapes — live between hero & next section */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-[5]">
         {SHAPES.map((shape, i) => (
-          <FloatingShape key={i} shape={shape} scrollProgress={smooth} />
+          <FloatingShape key={i} shape={shape} scrollProgress={activeProgress} />
         ))}
       </div>
 

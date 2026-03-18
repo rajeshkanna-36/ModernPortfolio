@@ -48,7 +48,7 @@ export default function WhoAmI() {
 
           <div className="order-1 lg:order-2 relative">
             <div style={{
-              maxWidth: "350px",
+              maxWidth: "min(350px, 100vw)",
               overflow: "hidden",
               maskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)",
               WebkitMaskImage: "linear-gradient(to right, transparent 0%, black 20%, black 80%, transparent 100%)"
