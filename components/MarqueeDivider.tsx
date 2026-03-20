@@ -25,19 +25,21 @@ export default function MarqueeDivider() {
   const repeatedItems = [...items, ...items, ...items, ...items];
 
   return (
-    <div className="bg-zinc-950 py-5 border-y border-zinc-800/80 overflow-hidden whitespace-nowrap select-none relative z-20">
-      <motion.div
-        className="inline-flex items-center"
-        animate={{ x: [0, -1200] }}
-        transition={{
-          x: {
-            repeat: Infinity,
-            repeatType: "loop",
-            duration: 35,
-            ease: "linear",
-          },
-        }}
-      >
+    <div className="bg-zinc-950 py-5 border-y border-zinc-800/80 overflow-hidden whitespace-nowrap select-none relative z-20 group">
+      <style>{`
+        @keyframes custom-marquee {
+          0% { transform: translateX(0%); }
+          100% { transform: translateX(-50%); }
+        }
+        .animate-custom-marquee {
+          width: max-content;
+          animation: custom-marquee 35s linear infinite;
+        }
+        .group:hover .animate-custom-marquee {
+          animation-play-state: paused;
+        }
+      `}</style>
+      <div className="inline-flex items-center animate-custom-marquee">
         {repeatedItems.map((item, idx) => (
           <div key={idx} className="flex items-center mx-10">
             <span className="text-2xl md:text-3xl font-medium tracking-tight">
@@ -47,7 +49,7 @@ export default function MarqueeDivider() {
             <Star8 className="ml-20 w-5 h-5 text-[#f97316]" />
           </div>
         ))}
-      </motion.div>
+      </div>
     </div>
   );
 }

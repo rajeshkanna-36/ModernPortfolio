@@ -5,6 +5,9 @@ import Navbar from "@/components/Navbar";
 import SmoothScroll from "@/components/SmoothScroll";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
+import { Outfit } from "next/font/google";
+
+const outfit = Outfit({ subsets: ["latin"], variable: "--font-outfit" });
 
 export const metadata: Metadata = {
   title: "Rajesh Kanna | Portfolio",
@@ -19,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} antialiased font-sans`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${outfit.variable} antialiased font-sans`}
         suppressHydrationWarning
       >
         <SmoothScroll>

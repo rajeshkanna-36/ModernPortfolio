@@ -1,21 +1,24 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
+import Image from "next/image";
 import { useEffect, useState } from "react";
 
-const NAV_ITEMS = ["Work", "About", "Contact"] as const;
+const NAV_ITEMS = ["Work", "About Me"];
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [hovered, setHovered] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      // Collapse when scrolled past 100px
+      setScrolled(window.scrollY > 100);
     };
-
     window.addEventListener("scroll", handleScroll);
+    handleScroll(); // Check immediately
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -28,127 +31,134 @@ export default function Navbar() {
   }, []);
 
   return (
-    <motion.header
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-      className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-white/80 backdrop-blur-md border-b border-zinc-200" : "bg-transparent"
-      }`}
-    >
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 h-16 sm:h-20 flex flex-col justify-center">
-        {/* Top Boundary Line - Always visible, minimalist detail */}
-        <div className="absolute top-0 left-4 right-4 sm:left-6 sm:right-6 h-px bg-zinc-200" />
-
-        <div className="flex items-center justify-between w-full relative">
-          {/* Logo / Brand */}
-          <Link href="/" className="group flex items-center gap-3">
-             {/* Geometric Icon */}
-            <motion.div 
-              whileHover={{ rotate: 90, scale: 1.1 }}
-              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-              className="relative w-8 h-8 flex items-center justify-center border border-zinc-900 overflow-hidden group-hover:bg-zinc-900 transition-colors duration-300"
-            >
-               <div className="w-4 h-4 border border-zinc-900 group-hover:border-white transition-colors duration-300 transform rotate-45" />
-            </motion.div>
-            <span className="font-bold text-sm tracking-[0.2em] uppercase text-zinc-900">
+    <>
+      <div className="fixed top-6 left-1/2 -translate-x-1/2 z-50">
+        <motion.nav
+          initial={{ y: -100, opacity: 0 }}
+          animate={{ y: 0, opacity: 1 }}
+          transition={{ type: "spring", bounce: 0.2, duration: 0.8 }}
+          layout
+          className="bg-white/95 backdrop-blur-md shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-zinc-200/80 rounded-full flex items-center p-1.5 overflow-hidden"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+        >
+          {/* Always Visible: Symbol & Name */}
+          <motion.div layout className="flex items-center gap-3 pl-1 pr-3 cursor-pointer" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+            <div className="w-10 h-10 rounded-full bg-[#f97316] flex items-center justify-center flex-shrink-0">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2.5" strokeLinejoin="round">
+                <rect x="4" y="4" width="16" height="16" rx="1" transform="rotate(45 12 12)" />
+              </svg>
+            </div>
+            <span style={{ fontFamily: "var(--font-geist-mono), monospace" }} className="text-zinc-950 font-medium tracking-[-0.02em] text-[14px] whitespace-nowrap">
               Rajesh Kanna
             </span>
-          </Link>
+          </motion.div>
 
-          {/* Center Line Decoration */}
-          <div className="hidden md:block absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-32 h-[1px] bg-zinc-300" />
+          {/* Links Section (Expanded) */}
+          {/* Links Section — visible when NOT scrolled, OR when hovered while scrolled */}
+          <AnimatePresence initial={false}>
+            {(!scrolled || hovered) && (
+              <motion.div
+                key="full-menu"
+                layout
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center whitespace-nowrap overflow-hidden"
+              >
+                <div className="flex items-center gap-6 pl-2 pr-1 h-full">
+                  {NAV_ITEMS.map((item) => (
+                    <Link
+                      key={item}
+                      href={`#${item.toLowerCase().replace(' ', '-')}`}
+                      className="text-[14px] font-semibold text-zinc-900 hover:text-zinc-500 transition-colors whitespace-nowrap"
+                    >
+                      {item}
+                    </Link>
+                  ))}
+                  <button className="px-5 py-2 rounded-full border border-zinc-200 text-[14px] font-semibold text-zinc-900 hover:bg-zinc-50 transition-colors whitespace-nowrap ml-2">
+                    Resume
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
 
-          {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
-            {NAV_ITEMS.map((item) => (
-              <div key={item} className="relative group py-1">
-                <Link
-                  href={`#${item.toLowerCase()}`}
-                  className="text-xs uppercase tracking-widest font-medium text-zinc-600 group-hover:text-zinc-900 transition-colors duration-300"
-                >
-                  {item}
-                </Link>
-                {/* Underline geometric slide animation */}
-                <motion.span 
-                  className="absolute bottom-0 left-0 w-full h-[1px] bg-zinc-900 origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500 ease-[0.16,1,0.3,1]"
-                />
-              </div>
-            ))}
-          </nav>
-
-          {/* Mobile Hamburger */}
-          <div className="md:hidden">
-            <button
-              type="button"
-              aria-label={open ? "Close menu" : "Open menu"}
-              aria-expanded={open}
-              className="relative h-10 w-10 grid place-items-center text-zinc-900"
-              data-cursor-hover
-              onClick={() => setOpen((v) => !v)}
-            >
-              <span className="sr-only">{open ? "Close" : "Menu"}</span>
-              <span
-                className="absolute block h-px w-6 bg-current transition-transform duration-300 ease-[0.16,1,0.3,1]"
-                style={{
-                  transform: open
-                    ? "translateY(0px) rotate(45deg)"
-                    : "translateY(-6px) rotate(0deg)",
-                  opacity: 0.8,
-                }}
-              />
-              <span
-                className="absolute block h-px w-6 bg-current transition-opacity duration-200"
-                style={{ opacity: open ? 0 : 0.55 }}
-              />
-              <span
-                className="absolute block h-px w-6 bg-current transition-transform duration-300 ease-[0.16,1,0.3,1]"
-                style={{
-                  transform: open
-                    ? "translateY(0px) rotate(-45deg)"
-                    : "translateY(6px) rotate(0deg)",
-                  opacity: 0.8,
-                }}
-              />
-            </button>
-          </div>
-        </div>
+          {/* Animated Loading Dots (Collapsed & not hovered) */}
+          <AnimatePresence initial={false}>
+            {scrolled && !hovered && (
+              <motion.div
+                key="collapsed-dots"
+                layout
+                initial={{ opacity: 0, width: 0 }}
+                animate={{ opacity: 1, width: "auto" }}
+                exit={{ opacity: 0, width: 0 }}
+                transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
+                className="flex items-center whitespace-nowrap overflow-hidden"
+              >
+                <div className="flex items-center gap-1 pl-2 pr-4 py-2 h-full">
+                  {[0, 1, 2].map((i) => (
+                    <motion.div
+                      key={i}
+                      className="w-[5px] h-[5px] rounded-full bg-zinc-400"
+                      animate={{ 
+                        y: [0, -4, 0],
+                        opacity: [0.4, 1, 0.4]
+                      }}
+                      transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        ease: "easeInOut",
+                        delay: i * 0.15,
+                      }}
+                    />
+                  ))}
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.nav>
       </div>
 
-      {/* Mobile Panel */}
-      {open ? (
-        <>
-          <button
-            aria-label="Close menu overlay"
-            className="fixed inset-0 z-40 bg-black/10 backdrop-blur-[2px] md:hidden"
-            onClick={() => setOpen(false)}
-          />
-          <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            transition={{ duration: 0.25, ease: [0.16, 1, 0.3, 1] }}
-            className="md:hidden absolute top-full left-0 right-0 z-50"
-          >
-            <div className="mx-4 mt-3 rounded-2xl border border-zinc-200 bg-white/80 backdrop-blur-md overflow-hidden">
-              <div className="py-1">
+      {/* Expanded Menu Dropdown (When clicked on the ellipsis) */}
+      <AnimatePresence>
+        {open && (
+          <>
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-40 bg-black/5 backdrop-blur-sm"
+              onClick={() => setOpen(false)}
+            />
+            <motion.div
+              initial={{ opacity: 0, y: -20, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -20, scale: 0.95 }}
+              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed z-50 top-24 left-1/2 -translate-x-1/2 w-[90%] max-w-[320px] bg-white border border-zinc-200 rounded-3xl shadow-xl overflow-hidden p-3"
+            >
+              <div className="flex flex-col gap-1">
                 {NAV_ITEMS.map((item) => (
                   <Link
                     key={item}
-                    href={`#${item.toLowerCase()}`}
-                    className="flex items-center justify-between px-5 py-4 text-sm uppercase tracking-widest text-zinc-800 hover:bg-black/[0.03] active:bg-black/[0.05] transition-colors"
+                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                    className="flex items-center px-4 py-3 text-[15px] font-semibold text-zinc-900 hover:bg-zinc-100 rounded-xl transition-colors"
                     onClick={() => setOpen(false)}
-                    data-cursor-hover
                   >
-                    <span className="font-medium">{item}</span>
-                    <span className="text-zinc-400">↵</span>
+                    {item}
                   </Link>
                 ))}
+                <div className="h-px bg-zinc-100 my-1 w-full" />
+                <button className="flex items-center px-4 py-3 text-[15px] font-semibold text-zinc-900 hover:bg-zinc-100 rounded-xl transition-colors text-left w-full">
+                  Resume
+                </button>
               </div>
-            </div>
-          </motion.div>
-        </>
-      ) : null}
-    </motion.header>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </>
   );
 }

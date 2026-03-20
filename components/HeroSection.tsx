@@ -26,14 +26,19 @@ export default function HeroSection() {
             </svg>
             {/* Sunburst O */}
             <svg id="sunburst" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="4">
-              {[...Array(24)].map((_, i) => (
-                <line
-                  key={i}
-                  x1="50" y1="50"
-                  x2={50 + 40 * Math.cos((i * 15 * Math.PI) / 180)}
-                  y2={50 + 40 * Math.sin((i * 15 * Math.PI) / 180)}
-                />
-              ))}
+              {[...Array(24)].map((_, i) => {
+                const angle = (i * 15 * Math.PI) / 180;
+                const x2 = parseFloat((50 + 40 * Math.cos(angle)).toFixed(6));
+                const y2 = parseFloat((50 + 40 * Math.sin(angle)).toFixed(6));
+                return (
+                  <line
+                    key={i}
+                    x1="50" y1="50"
+                    x2={x2}
+                    y2={y2}
+                  />
+                )
+              })}
             </svg>
           </div>
 
@@ -102,7 +107,7 @@ export default function HeroSection() {
             className="absolute z-[60] pointer-events-none"
           >
             <div className="translate-y-3 translate-x-3">
-              <svg width="36" height="36" viewBox="0 0 36 36" fill="#3b82f6" stroke="white" strokeWidth="2.5"><path d="M10 6L28 18L20 18L20 30L10 6Z" /></svg>
+              <svg width="56" height="56" viewBox="0 0 36 36" fill="#3b82f6" stroke="white" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"><path d="M6 3 L26 14 L17 17 L14 26 Q10 13 6 3 Z" /></svg>
             </div>
           </motion.div>
         </div>

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { motion } from "framer-motion";
+import { motion, useMotionValue, useSpring, useTransform } from "framer-motion";
 import Image from "next/image";
 
 interface InstagramPostCardProps {
@@ -11,6 +11,24 @@ interface InstagramPostCardProps {
 export default function InstagramPostCard({ className = "" }: InstagramPostCardProps) {
   const [isHovered, setIsHovered] = useState(false);
   const [isLiked, setIsLiked] = useState(false);
+
+  // 3D Tilt state
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  
+  const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
+  const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
+
+  const rotateX = useTransform(mouseYSpring, [-1, 1], [15, -15]);
+  const rotateY = useTransform(mouseXSpring, [-1, 1], [-15, 15]);
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    const rect = e.currentTarget.getBoundingClientRect();
+    const centerX = rect.left + rect.width / 2;
+    const centerY = rect.top + rect.height / 2;
+    x.set((e.clientX - centerX) / (rect.width / 2));
+    y.set((e.clientY - centerY) / (rect.height / 2));
+  };
 
   // Animation variants for the stacked cards
   const card3Variants = {
@@ -53,11 +71,19 @@ export default function InstagramPostCard({ className = "" }: InstagramPostCardP
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
       className={`relative w-full max-w-[320px] sm:max-w-[350px] ${className}`}
-      onHoverStart={() => setIsHovered(true)}
-      onHoverEnd={() => setIsHovered(false)}
+      style={{ perspective: 1200 }}
+      onMouseMove={handleMouseMove}
       onMouseEnter={() => setIsHovered(true)}
-      onMouseLeave={() => setIsHovered(false)}
+      onMouseLeave={() => {
+        setIsHovered(false);
+        x.set(0);
+        y.set(0);
+      }}
     >
+      <motion.div
+        style={{ rotateX, rotateY, transformStyle: "preserve-3d" }}
+        className="relative w-full h-full"
+      >
       {/* Background Card 3 */}
       <motion.div
         variants={card3Variants}
@@ -125,6 +151,7 @@ export default function InstagramPostCard({ className = "" }: InstagramPostCardP
             Connect
           </button>
         </div>
+      </motion.div>
       </motion.div>
     </motion.div>
   );

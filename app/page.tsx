@@ -4,6 +4,7 @@ import MarqueeDivider from "@/components/MarqueeDivider";
 import GeometricBackground from "@/components/GeometricBackground";
 import HomeInteractions from "@/components/home/HomeInteractions";
 import HomeParallaxScroll from "@/components/home/HomeParallaxScroll";
+import ProjectsPreview from "@/components/home/ProjectsPreview";
 
 export default function Home() {
   return (
@@ -16,6 +17,7 @@ export default function Home() {
             <>
               <MarqueeDivider />
               <WhoAmI />
+              <ProjectsPreview />
             </>
           }
         />

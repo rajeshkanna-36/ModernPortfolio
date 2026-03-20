@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useMemo } from "react";
+import { useState, useEffect } from "react";
 
 type HeroDoodlesProps = {
   /** Scroll target for "Say Hi" */
@@ -9,11 +9,13 @@ type HeroDoodlesProps = {
 };
 
 function useIsCoarsePointer() {
-  // SSR-safe: default to false; on mobile we still allow tapping.
-  return useMemo(() => {
-    if (typeof window === "undefined") return false;
-    return window.matchMedia?.("(pointer: coarse)")?.matches ?? false;
+  const [isCoarse, setIsCoarse] = useState(false);
+
+  useEffect(() => {
+    setIsCoarse(window.matchMedia?.("(pointer: coarse)")?.matches ?? false);
   }, []);
+
+  return isCoarse;
 }
 
 export default function HeroDoodles({ contactId = "contact" }: HeroDoodlesProps) {
