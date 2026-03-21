@@ -55,7 +55,7 @@ export default function HeroDoodles({ contactId = "contact" }: HeroDoodlesProps)
           viewBox="0 0 120 120"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          className="opacity-90"
+          className="opacity-90 w-[90px] h-[90px] sm:w-[120px] sm:h-[120px]"
         >
           {/* red smiley */}
           <motion.circle
@@ -166,7 +166,7 @@ export default function HeroDoodles({ contactId = "contact" }: HeroDoodlesProps)
 
       {/* Small black swirl (purely decorative, draggable on desktop) */}
       <motion.div
-        className="pointer-events-auto absolute right-4 bottom-24 sm:right-6 sm:bottom-28 md:right-10 md:bottom-32 opacity-70"
+        className="pointer-events-auto absolute right-2 bottom-20 sm:right-6 sm:bottom-28 md:right-10 md:bottom-32 opacity-70"
         aria-hidden="true"
         whileHover={{ rotate: 8, scale: 1.03 }}
         transition={{ type: "spring", stiffness: 360, damping: 20 }}
@@ -178,6 +178,7 @@ export default function HeroDoodles({ contactId = "contact" }: HeroDoodlesProps)
           viewBox="0 0 86 86"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
+          className="w-[60px] h-[60px] sm:w-[86px] sm:h-[86px]"
         >
           <motion.path
             d="M54 18C41 12 26 19 27 34C28 52 56 45 56 60C56 72 40 74 33 64"

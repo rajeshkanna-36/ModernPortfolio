@@ -43,7 +43,7 @@ export default function HeroSection() {
           </div>
 
           {/* Invisible placeholder for dimensions */}
-          <div className="text-[11.5vw] sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] opacity-0 select-none pointer-events-none p-3 md:p-6 whitespace-nowrap">
+          <div className="text-[14vw] sm:text-[11.5vw] md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] opacity-0 select-none pointer-events-none p-2 sm:p-3 md:p-6 whitespace-nowrap">
             FULL STACK<br />DEVELOPER
           </div>
 
@@ -62,8 +62,8 @@ export default function HeroSection() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="absolute inset-0 z-10 overflow-visible pointer-events-none"
           >
-            <div className="absolute inset-0 p-3 md:p-6 flex flex-col justify-center">
-              <div className="text-[11.5vw] sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] text-black whitespace-nowrap">
+            <div className="absolute inset-0 p-2 sm:p-3 md:p-6 flex flex-col justify-center">
+              <div className="text-[14vw] sm:text-[11.5vw] md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] text-black whitespace-nowrap">
                 {/* LINE 1: FULL STACK */}
                 <div className="flex items-center">
                   <span>FULL ST</span>
@@ -137,9 +137,10 @@ export default function HeroSection() {
             {/* 
                Aligning the cursor tip (6, 3 from the SVG) to the 100%, 100% point.
                We shift the div by -6px horizontally and -3px vertically so the tip is the pivot point.
+               Mobile scales the SVG down visually while maintaining alignment.
             */}
-            <div className="-translate-x-[6px] -translate-y-[3px]">
-              <svg width="56" height="56" viewBox="0 0 36 36" fill="#3b82f6" stroke="white" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
+            <div className="-translate-x-[4px] -translate-y-[2px] md:-translate-x-[6px] md:-translate-y-[3px]">
+              <svg viewBox="0 0 36 36" className="w-[32px] h-[32px] md:w-[56px] md:h-[56px]" fill="#3b82f6" stroke="white" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
                 <path d="M6 3 L26 14 L17 17 L14 26 Q10 13 6 3 Z" />
               </svg>
             </div>

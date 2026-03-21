@@ -67,7 +67,7 @@ export default function Navbar() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="flex items-center whitespace-nowrap overflow-hidden"
               >
-                <div className="flex items-center gap-6 pl-2 pr-1 h-full">
+                <div className="hidden md:flex items-center gap-6 pl-2 pr-1 h-full">
                   {NAV_ITEMS.map((item) => (
                     <Link
                       key={item}
@@ -97,7 +97,7 @@ export default function Navbar() {
                 transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                 className="flex items-center whitespace-nowrap overflow-hidden"
               >
-                <div className="flex items-center gap-1 pl-2 pr-4 py-2 h-full">
+                <div className="hidden md:flex items-center gap-1 pl-2 pr-4 py-2 h-full">
                   {[0, 1, 2].map((i) => (
                     <motion.div
                       key={i}
@@ -118,10 +118,28 @@ export default function Navbar() {
               </motion.div>
             )}
           </AnimatePresence>
+          {/* Mobile Geometric Burger Icon */}
+          <motion.div layout className="flex md:hidden items-center pr-2 pl-2 border-l border-zinc-200/50 h-5 my-1.5 overflow-hidden">
+            <button 
+              onClick={() => setOpen(!open)}
+              className="relative w-8 h-8 flex items-center justify-center text-zinc-900 focus:outline-none"
+            >
+              <motion.span 
+                 animate={{ rotate: open ? 45 : 0, y: open ? 0 : -3 }}
+                 transition={{ type: "spring", bounce: 0.3 }}
+                 className="absolute w-5 h-[2px] bg-current rounded-full"
+              />
+              <motion.span 
+                 animate={{ rotate: open ? -45 : 0, y: open ? 0 : 3 }}
+                 transition={{ type: "spring", bounce: 0.3 }}
+                 className="absolute w-5 h-[2px] bg-current rounded-full"
+              />
+            </button>
+          </motion.div>
         </motion.nav>
       </div>
 
-      {/* Expanded Menu Dropdown (When clicked on the ellipsis) */}
+      {/* Expanded Menu Dropdown (When clicked on the burger) */}
       <AnimatePresence>
         {open && (
           <>
@@ -129,30 +147,56 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 z-40 bg-black/5 backdrop-blur-sm"
+              className="fixed inset-0 z-40 bg-zinc-900/10 backdrop-blur-sm md:hidden"
               onClick={() => setOpen(false)}
             />
             <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95 }}
-              animate={{ opacity: 1, y: 0, scale: 1 }}
-              exit={{ opacity: 0, y: -20, scale: 0.95 }}
-              transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-              className="fixed z-50 top-24 left-1/2 -translate-x-1/2 w-[90%] max-w-[320px] bg-white border border-zinc-200 rounded-3xl shadow-xl overflow-hidden p-3"
+              initial={{ opacity: 0, y: -15, scale: 0.98, filter: "blur(4px)" }}
+              animate={{ opacity: 1, y: 0, scale: 1, filter: "blur(0px)" }}
+              exit={{ opacity: 0, y: -15, scale: 0.98, filter: "blur(4px)" }}
+              transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+              className="fixed z-50 top-24 left-4 right-4 md:hidden bg-white/90 backdrop-blur-2xl border border-white/40 shadow-[0_24px_48px_rgba(0,0,0,0.06)] rounded-3xl overflow-hidden p-2"
             >
-              <div className="flex flex-col gap-1">
+              <div className="flex flex-col bg-zinc-50/80 rounded-2xl p-4 border border-zinc-100/50">
+                <div className="flex justify-between items-center mb-6 px-2">
+                  <span className="text-[12px] font-medium tracking-widest uppercase text-zinc-400">
+                    Menu
+                  </span>
+                </div>
                 {NAV_ITEMS.map((item) => (
                   <Link
                     key={item}
                     href={`#${item.toLowerCase().replace(' ', '-')}`}
-                    className="flex items-center px-4 py-3 text-[15px] font-semibold text-zinc-900 hover:bg-zinc-100 rounded-xl transition-colors"
+                    className="group flex items-center justify-between px-2 py-4 border-b border-zinc-200/60 last:border-0"
                     onClick={() => setOpen(false)}
                   >
-                    {item}
+                    <span className="text-3xl font-semibold tracking-tighter text-zinc-900">{item}</span>
+                    <motion.div 
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.1 }}
+                      className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-zinc-400 group-hover:text-[#f97316] group-hover:shadow transition-all"
+                    >
+                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                        <line x1="5" y1="12" x2="19" y2="12"></line>
+                        <polyline points="12 5 19 12 12 19"></polyline>
+                      </svg>
+                    </motion.div>
                   </Link>
                 ))}
-                <div className="h-px bg-zinc-100 my-1 w-full" />
-                <button className="flex items-center px-4 py-3 text-[15px] font-semibold text-zinc-900 hover:bg-zinc-100 rounded-xl transition-colors text-left w-full">
-                  Resume
+                
+                <button 
+                   className="group flex items-center justify-between px-2 py-4 mt-2 border-t border-zinc-200/60 w-full"
+                   onClick={() => setOpen(false)}
+                >
+                  <span className="text-3xl font-semibold tracking-tighter text-zinc-900">Resume</span>
+                  <div className="w-10 h-10 rounded-full bg-white shadow-sm flex items-center justify-center text-zinc-400 group-hover:text-[#f97316] group-hover:shadow transition-all">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                       <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                       <polyline points="7 10 12 15 17 10"></polyline>
+                       <line x1="12" y1="15" x2="12" y2="3"></line>
+                    </svg>
+                  </div>
                 </button>
               </div>
             </motion.div>
