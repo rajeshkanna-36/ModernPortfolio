@@ -14,6 +14,8 @@ export const metadata: Metadata = {
   description: "Full Stack Developer Portfolio",
 };
 
+import LoadingManager from "@/components/LoadingManager";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -25,11 +27,13 @@ export default function RootLayout({
         className={`${GeistSans.variable} ${GeistMono.variable} ${outfit.variable} antialiased font-sans`}
         suppressHydrationWarning
       >
-        <SmoothScroll>
-          <CursorWrapper />
-          <Navbar />
-          {children}
-        </SmoothScroll>
+        <LoadingManager>
+          <SmoothScroll>
+            <CursorWrapper />
+            <Navbar />
+            {children}
+          </SmoothScroll>
+        </LoadingManager>
       </body>
     </html>
   );

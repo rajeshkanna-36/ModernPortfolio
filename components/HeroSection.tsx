@@ -43,18 +43,26 @@ export default function HeroSection() {
           </div>
 
           {/* Invisible placeholder for dimensions */}
-          <div className="text-[11.5vw] sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] opacity-0 select-none pointer-events-none p-5 md:p-8 whitespace-nowrap">
+          <div className="text-[11.5vw] sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] opacity-0 select-none pointer-events-none p-3 md:p-6 whitespace-nowrap">
             FULL STACK<br />DEVELOPER
           </div>
 
-          {/* Reveal Overlay */}
+          {/* Selection Marquee (Expanding Box with clear borders) */}
+          <motion.div
+            initial={{ width: 0, height: 0, opacity: 0 }}
+            animate={{ width: "100%", height: "100%", opacity: 1 }}
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
+            className="absolute top-0 left-0 z-20 pointer-events-none border-[3px] border-[#3b82f6]/80 bg-[#3b82f6]/5"
+          />
+
+          {/* Reveal Overlay (Clipped Text) */}
           <motion.div
             initial={{ clipPath: "inset(0% 100% 100% 0%)" }}
             animate={{ clipPath: "inset(0% 0% 0% 0%)" }}
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
-            className="absolute inset-0 z-10 overflow-visible"
+            className="absolute inset-0 z-10 overflow-visible pointer-events-none"
           >
-            <div className="absolute inset-0 bg-[#3b82f6]/5 border-[4px] border-[#3b82f6]/40 p-5 md:p-8 flex flex-col justify-center">
+            <div className="absolute inset-0 p-3 md:p-6 flex flex-col justify-center">
               <div className="text-[11.5vw] sm:text-7xl md:text-8xl lg:text-[9.5rem] font-bold tracking-tighter leading-[0.8] text-black whitespace-nowrap">
                 {/* LINE 1: FULL STACK */}
                 <div className="flex items-center">
@@ -94,10 +102,30 @@ export default function HeroSection() {
           </motion.div>
 
           {/* Corner Handles */}
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="absolute -top-[4px] -left-[4px] w-3 h-3 bg-white border-[3px] border-[#3b82f6] z-20" />
-          <motion.div initial={{ left: 0 }} animate={{ left: "100%" }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} className="absolute -top-[4px] -ml-[6px] w-3 h-3 bg-white border-[3px] border-[#3b82f6] z-20" />
-          <motion.div initial={{ top: 0 }} animate={{ top: "100%" }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} className="absolute -left-[4px] -mt-[6px] w-3 h-3 bg-white border-[3px] border-[#3b82f6] z-20" />
-          <motion.div initial={{ left: 0, top: 0 }} animate={{ left: "100%", top: "100%" }} transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1] }} className="absolute -ml-[6px] -mt-[6px] w-3 h-3 bg-white border-[3px] border-[#3b82f6] z-20" />
+          <motion.div 
+            initial={{ opacity: 0 }} 
+            animate={{ opacity: 1 }} 
+            transition={{ delay: 0.1 }}
+            className="absolute -top-[4px] -left-[4px] w-3 h-3 bg-white border-[2px] border-[#3b82f6] z-20" 
+          />
+          <motion.div 
+            initial={{ left: 0 }} 
+            animate={{ left: "100%" }} 
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }} 
+            className="absolute -top-[4px] -ml-[6px] w-3 h-3 bg-white border-[2px] border-[#3b82f6] z-20" 
+          />
+          <motion.div 
+            initial={{ top: 0 }} 
+            animate={{ top: "100%" }} 
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }} 
+            className="absolute -left-[4px] -mt-[6px] w-3 h-3 bg-white border-[2px] border-[#3b82f6] z-20" 
+          />
+          <motion.div 
+            initial={{ left: 0, top: 0 }} 
+            animate={{ left: "100%", top: "100%" }} 
+            transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }} 
+            className="absolute -ml-[6px] -mt-[6px] w-3 h-3 bg-white border-[2px] border-[#3b82f6] z-20" 
+          />
 
           {/* Mouse Cursor Overlay */}
           <motion.div 
@@ -106,8 +134,14 @@ export default function HeroSection() {
             transition={{ duration: 1.2, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
             className="absolute z-[60] pointer-events-none"
           >
-            <div className="translate-y-3 translate-x-3">
-              <svg width="56" height="56" viewBox="0 0 36 36" fill="#3b82f6" stroke="white" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round"><path d="M6 3 L26 14 L17 17 L14 26 Q10 13 6 3 Z" /></svg>
+            {/* 
+               Aligning the cursor tip (6, 3 from the SVG) to the 100%, 100% point.
+               We shift the div by -6px horizontally and -3px vertically so the tip is the pivot point.
+            */}
+            <div className="-translate-x-[6px] -translate-y-[3px]">
+              <svg width="56" height="56" viewBox="0 0 36 36" fill="#3b82f6" stroke="white" strokeWidth="2" strokeLinejoin="round" strokeLinecap="round">
+                <path d="M6 3 L26 14 L17 17 L14 26 Q10 13 6 3 Z" />
+              </svg>
             </div>
           </motion.div>
         </div>
