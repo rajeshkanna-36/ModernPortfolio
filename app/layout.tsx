@@ -24,7 +24,7 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body
-        className={`${GeistSans.variable} ${GeistMono.variable} ${outfit.variable} antialiased font-sans`}
+        className={`${GeistSans.variable} ${GeistMono.variable} ${outfit.variable} antialiased font-sans overflow-x-hidden w-full relative`}
         suppressHydrationWarning
       >
         <LoadingManager>
