@@ -3,6 +3,9 @@
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 
+import Image from "next/image";
+
+// Keep existing initial code...
 export default function DinoLoading({ onComplete }: { onComplete?: () => void }) {
   const [dots, setDots] = useState("");
   const [frame, setFrame] = useState(1);
@@ -72,11 +75,15 @@ export default function DinoLoading({ onComplete }: { onComplete?: () => void })
             animate={{ y: [0, -1, 0] }}
             transition={{ duration: 0.6, repeat: Infinity, ease: "linear" }}
           >
-            <img 
+            <Image 
               src={`/assets/dino/DinoRun${frame}.png`} 
               alt="Dino" 
+              width={70}
+              height={70}
               className="w-[44px] md:w-[70px] h-auto"
               style={{ imageRendering: 'pixelated' }}
+              priority
+              unoptimized
             />
           </motion.div>
 
@@ -95,11 +102,15 @@ export default function DinoLoading({ onComplete }: { onComplete?: () => void })
                   delay: i * 1.1,
                 }}
               >
-                <img 
+                <Image 
                   src={`/assets/cactus/SmallCactus${(i % 3) + 1}.png`} 
                   alt="Cactus" 
+                  width={40}
+                  height={40}
                   className="h-[24px] md:h-[40px] w-auto"
                   style={{ imageRendering: 'pixelated' }}
+                  priority
+                  unoptimized
                 />
               </motion.div>
             ))}
@@ -112,8 +123,8 @@ export default function DinoLoading({ onComplete }: { onComplete?: () => void })
                   animate={{ x: ["0%", "-50%"] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
               >
-                  <img src="/assets/other/track.png" alt="track" className="h-[6px] md:h-[12px] w-full" />
-                  <img src="/assets/other/track.png" alt="track" className="h-[6px] md:h-[12px] w-full" />
+                  <Image src="/assets/other/track.png" alt="track" width={800} height={12} className="h-[6px] md:h-[12px] w-full" priority unoptimized />
+                  <Image src="/assets/other/track.png" alt="track" width={800} height={12} className="h-[6px] md:h-[12px] w-full" priority unoptimized />
               </motion.div>
           </div>
         </div>
