@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef } from "react";
+import { useEffect, useRef, useState } from "react";
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
@@ -12,7 +12,15 @@ export default function CustomCursor() {
   const isHoveringWhoAmI = useRef(false);
   const rafId = useRef<number>(0);
 
+  const [isDesktop, setIsDesktop] = useState(true);
+
   useEffect(() => {
+    // Detect if this is a coarse pointer (touchscreen like mobile/tablet)
+    if (window.matchMedia("(pointer: coarse)").matches) {
+      setIsDesktop(false);
+      return;
+    }
+
     const dot = dotRef.current;
     const ring = ringRef.current;
     const pill = pillRef.current;
@@ -183,6 +191,8 @@ export default function CustomCursor() {
       });
     };
   }, []);
+
+  if (!isDesktop) return null;
 
   return (
     <>
