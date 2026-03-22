@@ -43,7 +43,7 @@ export default function WhoAmI() {
       >
         <div className="mb-12 relative grid grid-cols-1 lg:grid-cols-[auto_1fr] gap-12 lg:gap-20 items-center">
           <motion.div 
-            className="flex justify-center lg:justify-start order-2 lg:order-1"
+            className="flex justify-center lg:justify-start"
             initial={{ opacity: 0, x: -80, rotate: -5 }}
             whileInView={{ opacity: 1, x: 0, rotate: 0 }}
             viewport={{ once: true, amount: 0.3 }}
@@ -52,7 +52,7 @@ export default function WhoAmI() {
              <InstagramPostCard />
           </motion.div>
 
-          <div className="order-1 lg:order-2 relative">
+          <div className="relative">
             <motion.div 
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
