@@ -8,6 +8,8 @@ import HomeInteractions from "@/components/home/HomeInteractions";
 import SkillsBubble from "@/components/ui/SkillsBubble";
 import Footer from "@/components/Footer";
 
+import FeaturedProjects from "@/components/FeaturedProjects";
+
 // Dynamic imports for heavy or client-only components
 const GeometricBackground = dynamic(() => import("@/components/GeometricBackground"), { ssr: false });
 const HomeParallaxScroll = dynamic(() => import("@/components/home/HomeParallaxScroll"), { ssr: false });
@@ -23,6 +25,7 @@ export default function Home() {
             <>
               <MarqueeDivider />
               <WhoAmI />
+              <FeaturedProjects />
               <SkillsBubble />
               <Footer />
             </>

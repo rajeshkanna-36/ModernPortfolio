@@ -4,17 +4,18 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 
 interface ScrollTextRevealProps {
-  text: string;
+  text?: string;
+  elements?: (string | React.ReactNode)[];
   className?: string;
 }
 
 function CharacterReveal({
-  char,
+  children,
   index,
   total,
   scrollProgress,
 }: {
-  char: string;
+  children: React.ReactNode;
   index: number;
   total: number;
   scrollProgress: import("framer-motion").MotionValue<number>;
@@ -26,14 +27,15 @@ function CharacterReveal({
   const opacity = useTransform(scrollProgress, [start, end], [0.15, 1]);
 
   return (
-    <motion.span style={{ opacity }}>
-      {char}
+    <motion.span style={{ opacity, display: "inline-block" }}>
+      {children}
     </motion.span>
   );
 }
 
 export default function ScrollTextReveal({
   text,
+  elements,
   className = "",
 }: ScrollTextRevealProps) {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -43,59 +45,112 @@ export default function ScrollTextReveal({
     offset: ["start 0.9", "start 0.25"],
   });
 
-  // Split text into words, then characters within each word
-  const words = text.split(" ");
-  let globalCharIndex = 0;
+  const contentArray = elements || (text ? [text] : []);
 
-  // Count total characters including spaces
-  const totalChars = text.length;
+  // Normalize into structured items: words, spaces, and React nodes
+  const normalizedItems: Array<{ type: "word" | "space" | "node"; content: any }> = [];
+
+  contentArray.forEach((el) => {
+    if (typeof el === "string") {
+      const parts = el.split(/(\s+)/);
+      parts.forEach((part) => {
+        if (part.match(/^\s+$/)) {
+          normalizedItems.push({ type: "space", content: part });
+        } else if (part.length > 0) {
+          normalizedItems.push({ type: "word", content: part });
+        }
+      });
+    } else {
+      normalizedItems.push({ type: "node", content: el });
+    }
+  });
+
+  let totalChars = 0;
+  normalizedItems.forEach((item) => {
+    if (item.type === "word" || item.type === "space") {
+      totalChars += item.content.length;
+    } else if (item.type === "node") {
+      totalChars += 1;
+    }
+  });
+
+  let globalCharIndex = 0;
 
   return (
     <div ref={containerRef} className={className}>
-      <p
+      <div
         style={{
           fontSize: "clamp(28px, 6.5vw, 48px)",
           fontWeight: 600,
           lineHeight: 1.2,
           letterSpacing: "-0.03em",
+          display: "block"
         }}
       >
-        {words.map((word, wordIndex) => (
-          <span
-            key={wordIndex}
-            style={{ display: "inline-block", whiteSpace: "nowrap" }}
-          >
-            {word.split("").map((char) => {
-              const currentIndex = globalCharIndex++;
-              return (
+        {normalizedItems.map((item, i) => {
+          if (item.type === "word") {
+            return (
+              <span key={i} style={{ display: "inline-block", whiteSpace: "nowrap" }}>
+                {item.content.split("").map((char: string) => {
+                  const currentIndex = globalCharIndex++;
+                  return (
+                    <CharacterReveal
+                      key={currentIndex}
+                      index={currentIndex}
+                      total={totalChars}
+                      scrollProgress={scrollYProgress}
+                    >
+                      {char}
+                    </CharacterReveal>
+                  );
+                })}
+              </span>
+            );
+          } else if (item.type === "space") {
+            return (
+              <span key={i} style={{ display: "inline-block", whiteSpace: "pre" }}>
+                {item.content.split("").map((spaceChar: string) => {
+                  const currentIndex = globalCharIndex++;
+                  return (
+                    <CharacterReveal
+                      key={currentIndex}
+                      index={currentIndex}
+                      total={totalChars}
+                      scrollProgress={scrollYProgress}
+                    >
+                      {spaceChar === " " ? "\u00A0" : spaceChar}
+                    </CharacterReveal>
+                  );
+                })}
+              </span>
+            );
+          } else if (item.type === "node") {
+            const currentIndex = globalCharIndex++;
+            return (
+              <span
+                key={i}
+                style={{
+                  display: "inline-flex",
+                  alignItems: "center",
+                  verticalAlign: "middle",
+                  margin: "0 0.15em",
+                  position: "relative",
+                  top: "-0.1em"
+                }}
+              >
                 <CharacterReveal
-                  key={currentIndex}
-                  char={char}
                   index={currentIndex}
                   total={totalChars}
                   scrollProgress={scrollYProgress}
-                />
-              );
-            })}
-            {/* Add a space after each word (except the last) */}
-            {wordIndex < words.length - 1 && (
-              <span style={{ display: "inline-block", width: "0.3em" }}>
-                {(() => {
-                  const spaceIndex = globalCharIndex++;
-                  return (
-                    <CharacterReveal
-                      char={"\u00A0"}
-                      index={spaceIndex}
-                      total={totalChars}
-                      scrollProgress={scrollYProgress}
-                    />
-                  );
-                })()}
+                >
+                  {item.content}
+                </CharacterReveal>
               </span>
-            )}
-          </span>
-        ))}
-      </p>
+            );
+          }
+          return null;
+        })}
+      </div>
     </div>
   );
 }

@@ -14,11 +14,11 @@ const Star8 = ({ className }: { className?: string }) => (
 
 export default function MarqueeDivider() {
   const items = [
-    { text: "Full Stack", highlight: "Development" },
-    { text: "DevOps", highlight: "Engineering" },
-    { text: "Cloud", highlight: "Architecture" },
-    { text: "CI/CD", highlight: "Pipelines" },
-    { text: "Scalable", highlight: "Systems" },
+    { text: "User", highlight: "Experience" },
+    { text: "Visual", highlight: "Design" },
+    { text: "Design", highlight: "Systems" },
+    { text: "Interaction", highlight: "Design" },
+    { text: "User", highlight: "Research" },
   ];
 
   // Repeat items for seamless loop
