@@ -110,7 +110,7 @@ export default function HomeParallaxScroll({ hero, next }: HomeParallaxScrollPro
     offset: ["start start", "end start"],
   });
 
-  const smooth = useSpring(scrollYProgress, { stiffness: 100, damping: 30, mass: 0.3 });
+  const smooth = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.2 });
   
   // Use raw progress on mobile to avoid 1:1 touch scroll jitter, smooth on desktop
   const activeProgress = isMobile ? scrollYProgress : smooth;
@@ -131,7 +131,7 @@ export default function HomeParallaxScroll({ hero, next }: HomeParallaxScrollPro
           opacity: heroOpacity,
           y: heroY,
           filter: useTransform(heroBlur, (v) => isMobile ? "none" : `blur(${v}px)`),
-          willChange: "transform, opacity",
+          willChange: "transform, opacity, filter",
         }}
       >
         {hero}

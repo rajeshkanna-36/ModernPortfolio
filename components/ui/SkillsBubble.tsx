@@ -3,19 +3,19 @@
 import { useRef } from "react";
 import { motion, useScroll, useTransform, MotionValue } from "framer-motion";
 import { 
-  // Full Stack
-  Globe, Server, Database, AppWindow, Code2, Monitor,
-  // DSA
-  Network, Binary, Braces, Layers, GitBranch,
-  // DevOps
-  Cloud, Cpu, Terminal, Box
+  // UI/UX Design
+  Figma, PenTool, Palette, Type, MousePointer2, MonitorSmartphone,
+  // Systems & Prototyping
+  Layers, Component, LayoutGrid, SlidersHorizontal, Eye,
+  // Visual & Branding
+  Wand2, Paintbrush, Ruler, Droplet
 } from "lucide-react";
 
-// Thematic icon lineup representing Full Stack, DSA, and DevOps
+// Thematic icon lineup representing UI/UX & Product Design
 const ICONS = [
-  Globe, Server, Database, AppWindow, Code2, Monitor, // Full Stack
-  Network, Binary, Braces, Layers, GitBranch,         // DSA
-  Cloud, Cpu, Terminal, Box                           // DevOps
+  Figma, PenTool, Palette, Type, MousePointer2, MonitorSmartphone, // UI/UX
+  Layers, Component, LayoutGrid, SlidersHorizontal, Eye,           // Systems
+  Wand2, Paintbrush, Ruler, Droplet                                // Visuals
 ];
 
 // Helper component for the individual letter particle effect
@@ -59,7 +59,7 @@ function AnimatedLetter({ char, globalIndex, total, progress }: { char: string; 
 }
 
 // Pre-calculate word and letter grouping so React handles flex-wrap properly without breaking mid-word
-const quoteString = "Architecting seamless digital experiences at scale.";
+const quoteString = "Crafting intuitive interfaces and beautiful user journeys.";
 const quoteWords = quoteString.split(" ");
 let charCounter = 0;
 const wordsWithIndexes = quoteWords.map(word => {
@@ -90,7 +90,7 @@ export default function SkillsBubble() {
   const marqueeX = useTransform(scrollYProgress, [0.45, 1], ["0vh", "-250vh"]);
 
   return (
-    <section ref={containerRef} id="skills-section" className="relative h-[350vh] w-full bg-zinc-950">
+    <section ref={containerRef} id="skills-section" className="relative h-[350vh] w-full bg-zinc-950 z-10">
       
       {/* Sticky Checkpoint: Pins to exactly the height of the viewport */}
       <div className="sticky top-0 h-screen w-full flex flex-col items-center justify-center overflow-hidden">

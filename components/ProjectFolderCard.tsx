@@ -120,11 +120,7 @@ export default function ProjectFolderCard({
           return (
             <motion.div
               key={originalIndex}
-              className={`${layerBaseClass} shadow-[0_4px_16px_rgba(0,0,0,0.06)] overflow-hidden ${
-                layer?.startsWith("/") 
-                  ? "bg-white ring-1 ring-inset ring-black/10"
-                  : layer || "bg-zinc-200"
-              }`}
+              className={`${layerBaseClass}`}
               initial={{ y: defaultY, x: defaultX, rotate: defaultRotate, scale: 0.95 }}
               animate={{
                 y: isHovered ? hoverY : defaultY,
@@ -134,24 +130,191 @@ export default function ProjectFolderCard({
               }}
               transition={{ type: "spring", stiffness: 280, damping: 22, mass: 1 + (originalIndex * 0.1) }}
             >
-              {layer?.startsWith("/") && (() => {
-                const [imgPath, pos] = layer.split('?pos=');
-                return (
-                  <img 
-                    src={imgPath} 
-                    alt={`mockup layer ${originalIndex}`} 
-                    className="w-full h-full object-cover" 
-                    style={pos ? { objectPosition: pos.replace(/_/g, " ") } : {}}
-                  />
-                );
-              })()}
+              {/* The Inner Image Container (which actually clips the image) */}
+              <div 
+                className={`absolute inset-0 w-full h-full shadow-[0_4px_16px_rgba(0,0,0,0.06)] overflow-hidden ${
+                  layer?.startsWith("/") 
+                    ? "bg-white ring-1 ring-inset ring-black/10"
+                    : layer || "bg-zinc-200"
+                }`}
+                style={{ borderRadius: "inherit" }}
+              >
+                {layer?.startsWith("/") && (() => {
+                  const [imgPath, pos] = layer.split('?pos=');
+                  return (
+                    <img 
+                      src={imgPath} 
+                      alt={`mockup layer ${originalIndex}`} 
+                      className="w-full h-full object-cover" 
+                      style={pos ? { objectPosition: pos.replace(/_/g, " ") } : {}}
+                    />
+                  );
+                })()}
+              </div>
               
-              {/* Coming Soon badge attached to the highest fanning portrait card (middle one) */}
-              {originalIndex === 2 && title === "Dream Line" && isHovered && (
-                <div className="absolute -top-10 left-1/2 -translate-x-1/2 px-5 py-2 bg-white border border-zinc-200 rounded-full shadow-md text-[13px] font-medium tracking-wide text-zinc-900 z-[100] whitespace-nowrap">
-                  Coming Soon
-                </div>
-              )}
+              {/* === CHEERS PROJECT DOODLES (Music / Tipping) === */}
+              <AnimatePresence>
+                {/* 1. Music Notes (Right Card) */}
+                {originalIndex === 1 && title === "Cheers" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20, rotate: -15, scale: 0.5 }}
+                    animate={{ opacity: 1, y: 0, rotate: 10, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.1 }}
+                    className="absolute -top-12 -right-8 sm:-right-12 z-[200] text-zinc-800 pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="64" height="64" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="rotate-12 opacity-80">
+                      <path d="M30 70V25L70 15V60"></path>
+                      <circle cx="21" cy="70" r="9" fill="currentColor"></circle>
+                      <circle cx="61" cy="60" r="9" fill="currentColor"></circle>
+                      <path d="M30 40L70 30"></path>
+                      <path d="M10 20L15 15" strokeWidth="3" stroke="#f97316"></path>
+                      <path d="M25 5L30 10" strokeWidth="3" stroke="#f97316"></path>
+                      <path d="M85 45L95 50" strokeWidth="3" stroke="#f97316"></path>
+                      <circle cx="80" cy="20" r="2" fill="#f97316" stroke="none"></circle>
+                    </svg>
+                  </motion.div>
+                )}
+                {/* 2. Curved Swoosh Arrow (Left Card) */}
+                {originalIndex === 3 && title === "Cheers" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20, rotate: 30, scale: 0.5 }}
+                    animate={{ opacity: 1, x: 0, rotate: -10, scale: 1 }}
+                    exit={{ opacity: 0, x: 10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 350, damping: 15, delay: 0.2 }}
+                    className="absolute -top-6 -left-14 z-[200] text-[#3b82f6] pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                      <path d="M20 80 C 20 40, 50 10, 80 20" />
+                      <path d="M60 10 L80 20 L70 40" />
+                      <circle cx="10" cy="50" r="4" fill="currentColor" stroke="none"/>
+                      <circle cx="30" cy="90" r="3" fill="currentColor" stroke="none"/>
+                    </svg>
+                  </motion.div>
+                )}
+                {/* 3. Asterisk Emphasis (Middle Card) */}
+                {originalIndex === 2 && title === "Cheers" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 30, rotate: 0, scale: 0.5 }}
+                    animate={{ opacity: 1, y: -20, rotate: 45, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.15 }}
+                    className="absolute -top-12 left-1/4 z-[200] text-[#f97316] pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="24" height="24" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="8" strokeLinecap="round" className="opacity-90">
+                      <line x1="50" y1="10" x2="50" y2="90" />
+                      <line x1="10" y1="50" x2="90" y2="50" />
+                      <line x1="22" y1="22" x2="78" y2="78" />
+                      <line x1="22" y1="78" x2="78" y2="22" />
+                    </svg>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* === DREAM LINE PROJECT DOODLES (Theme Park Pod) === */}
+              <AnimatePresence>
+                {/* 1. Sparkles (Left Card) */}
+                {originalIndex === 3 && title === "Dream Line" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20, rotate: 20, scale: 0.5 }}
+                    animate={{ opacity: 1, x: 0, rotate: -10, scale: 1 }}
+                    exit={{ opacity: 0, x: 10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.15 }}
+                    className="absolute -top-10 -left-12 z-[200] text-zinc-800 pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="48" height="48" viewBox="0 0 100 100" className="opacity-80">
+                      <path d="M50 10 Q 50 50 10 50 Q 50 50 50 90 Q 50 50 90 50 Q 50 50 50 10 Z" fill="#3b82f6" stroke="none"></path>
+                      <path d="M20 20 Q 20 30 10 30 Q 20 30 20 40 Q 20 30 30 30 Q 20 30 20 20 Z" fill="#f97316" stroke="none"></path>
+                    </svg>
+                  </motion.div>
+                )}
+                {/* 2. Abstract Dream Cloud (Middle Card) */}
+                {originalIndex === 2 && title === "Dream Line" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20, rotate: -20, scale: 0.5 }}
+                    animate={{ opacity: 1, y: -25, rotate: 5, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.2 }}
+                    className="absolute -top-6 right-1/4 z-[200] text-[#3b82f6] pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="48" height="48" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                      <path d="M30 60 A 20 20 0 0 1 50 30 A 25 25 0 0 1 80 50 A 15 15 0 0 1 80 80 L30 80 A 15 15 0 0 1 30 60 Z" />
+                      <circle cx="20" cy="85" r="4" fill="currentColor" stroke="none" />
+                      <circle cx="8" cy="95" r="2.5" fill="currentColor" stroke="none" />
+                    </svg>
+                  </motion.div>
+                )}
+                {/* 3. Swirl Loop (Right Card) */}
+                {originalIndex === 1 && title === "Dream Line" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: -20, rotate: -40, scale: 0.5 }}
+                    animate={{ opacity: 1, x: 0, rotate: 10, scale: 1 }}
+                    exit={{ opacity: 0, x: -10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.1 }}
+                    className="absolute -top-6 -right-10 z-[200] text-zinc-900 pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="40" height="40" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="6" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                      <path d="M50 20 C 80 20, 80 80, 50 80 C 30 80, 30 40, 50 40 C 65 40, 65 65, 50 65" />
+                    </svg>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
+              {/* === SWAYAM PROJECT DOODLES (Education) === */}
+              <AnimatePresence>
+                {/* 1. Lightbulb (Right Card) */}
+                {originalIndex === 1 && title === "SWAYAM" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 30, rotate: 10, scale: 0.5 }}
+                    animate={{ opacity: 1, y: 0, rotate: -5, scale: 1 }}
+                    exit={{ opacity: 0, y: 20, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.15 }}
+                    className="absolute -top-16 -right-6 md:-right-10 z-[200] text-zinc-800 pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="64" height="64" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="4" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                      <path d="M35 70 C 20 60, 20 30, 50 15 C 80 30, 80 60, 65 70"></path>
+                      <path d="M35 70h30 M40 80h20 M45 90h10" fill="none" stroke="currentColor"></path>
+                      <path d="M45 70v-15l5-10l5 10v15" fill="none" stroke="currentColor"></path>
+                      <path d="M50 5v-10 M20 25l-5-5 M80 25l5-5" stroke="#f97316" strokeWidth="4"></path>
+                    </svg>
+                  </motion.div>
+                )}
+                {/* 2. Mortarboard/Grad Cap (Left Card) */}
+                {originalIndex === 3 && title === "SWAYAM" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, x: 20, rotate: 15, scale: 0.5 }}
+                    animate={{ opacity: 1, x: 0, rotate: -15, scale: 1 }}
+                    exit={{ opacity: 0, x: 10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.1 }}
+                    className="absolute -top-10 -left-10 z-[200] text-[#3b82f6] pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="48" height="48" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" className="opacity-80">
+                      <path d="M10 40 L50 20 L90 40 L50 60 Z" />
+                      <path d="M30 50 V70 C 30 80, 70 80, 70 70 V50" />
+                      <path d="M50 40 V65" strokeWidth="3" />
+                      <circle cx="50" cy="70" r="5" fill="currentColor" />
+                    </svg>
+                  </motion.div>
+                )}
+                {/* 3. Play Button Abstract (Middle Card) */}
+                {originalIndex === 2 && title === "SWAYAM" && isHovered && (
+                  <motion.div 
+                    initial={{ opacity: 0, y: 20, rotate: -30, scale: 0.5 }}
+                    animate={{ opacity: 1, y: -30, rotate: 10, scale: 1 }}
+                    exit={{ opacity: 0, y: 10, scale: 0.5 }}
+                    transition={{ type: "spring", stiffness: 400, damping: 15, delay: 0.2 }}
+                    className="absolute -top-12 left-[30%] z-[200] text-[#f97316] pointer-events-none drop-shadow-md"
+                  >
+                    <svg width="32" height="32" viewBox="0 0 100 100" fill="currentColor" className="opacity-90">
+                      <path d="M30 20 C 40 10, 80 40, 80 50 C 80 60, 40 90, 30 80 C 20 70, 20 30, 30 20 Z" />
+                    </svg>
+                    <svg className="absolute -top-6 -right-8 w-6 h-6 text-zinc-900" viewBox="0 0 100 100" fill="none" stroke="currentColor" strokeWidth="8">
+                      <circle cx="50" cy="50" r="40" strokeLinecap="round" strokeDasharray="40 120"/>
+                    </svg>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+
             </motion.div>
           );
         })}

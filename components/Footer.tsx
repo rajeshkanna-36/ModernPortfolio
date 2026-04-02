@@ -1,132 +1,239 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, useMotionTemplate, useMotionValue, useSpring } from "framer-motion";
+import { useState, useEffect, useRef, MouseEvent } from "react";
+import { Check, Copy, ArrowUpRight, Clock, MousePointer2, Sparkles, Layout } from "lucide-react";
 
 export default function Footer() {
-  const giantText = "Rajesh Kanna".split("");
+  const giantText = "RAJESH KANNA";
+  const [copied, setCopied] = useState(false);
+  const [time, setTime] = useState("");
+  const containerRef = useRef<HTMLElement>(null);
+
+  // Live Clock effect
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      setTime(now.toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata", hour12: true, hour: "numeric", minute: "2-digit" }));
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  // Ambient mouse tracking for the entire footer spotlight & text mask
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  
+  // Smooth springs for the cursor spotlight
+  const smoothX = useSpring(mouseX, { stiffness: 50, damping: 20 });
+  const smoothY = useSpring(mouseY, { stiffness: 50, damping: 20 });
+
+  function handleMouseMove(e: MouseEvent<HTMLElement>) {
+    if (!containerRef.current) return;
+    const { left, top } = containerRef.current.getBoundingClientRect();
+    mouseX.set(e.clientX - left);
+    mouseY.set(e.clientY - top);
+  }
+
+  const handleCopy = () => {
+    navigator.clipboard.writeText("hello@rajeshkanna.com");
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
+
+  // Mask image template for the giant text hover effect
+  const maskImage = useMotionTemplate`radial-gradient(40vw circle at ${smoothX}px ${smoothY}px, black 0%, transparent 100%)`;
+  // Standard spotlight for background
+  const backgroundSpotlight = useMotionTemplate`radial-gradient(600px circle at ${smoothX}px ${smoothY}px, rgba(255,255,255,0.06), transparent 80%)`;
 
   return (
-    <footer className="relative bg-zinc-950 text-white pt-24 pb-0 overflow-hidden min-h-screen flex flex-col justify-between border-t border-zinc-900/50">
-      
-      {/* Ambient Glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[300px] opacity-20 pointer-events-none">
-        <div className="absolute inset-0 bg-gradient-to-b from-white to-transparent blur-3xl rounded-full mix-blend-overlay" />
-      </div>
+    <footer 
+      ref={containerRef}
+      onMouseMove={handleMouseMove}
+      className="relative bg-[#050505] text-white pt-24 pb-0 overflow-hidden min-h-screen flex flex-col justify-between border-t border-zinc-900 group"
+    >
+      {/* Figma-style Blueprint Grid */}
+      <div 
+        className="absolute inset-0 opacity-[0.03] pointer-events-none z-0"
+        style={{
+          backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
+          backgroundSize: '40px 40px'
+        }}
+      />
+
+      {/* Dynamic Ambient Spotlight tracking mouse */}
+      <motion.div
+        className="absolute inset-0 pointer-events-none z-0"
+        style={{ background: backgroundSpotlight }}
+      />
 
       {/* Top Links Section */}
       <div className="max-w-[90rem] mx-auto w-full px-8 md:px-12 grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-8 relative z-20">
         
-        {/* Left Hook with Creative Badge */}
+        {/* Left Side: Contact & Info */}
         <div className="md:col-span-6 lg:col-span-7 flex flex-col justify-between relative">
           
-          {/* Spinning Availability Badge */}
-          <motion.div 
-            animate={{ rotate: 360 }}
-            transition={{ repeat: Infinity, duration: 10, ease: "linear" }}
-            className="absolute -top-12 -left-4 md:-left-8 w-32 h-32 md:w-40 md:h-40 pointer-events-none opacity-30 select-none hidden md:block"
-          >
-            <svg viewBox="0 0 100 100" width="100%" height="100%">
-              <defs>
-                <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
-              </defs>
-              <text fontSize="11" fontWeight="bold" fill="currentColor" letterSpacing="2.5">
-                <textPath href="#circlePath">
-                  · OPEN TO WORK · AVAILABLE QUICKLY 
-                </textPath>
-              </text>
-            </svg>
-          </motion.div>
-
           <div className="relative z-10 pt-4 md:pt-16 md:pl-8">
-            <h2 className="text-2xl md:text-4xl font-semibold tracking-tight text-white mb-4">
-              Let's build something <br className="hidden md:block"/> extraordinary.
-            </h2>
-            <div className="flex items-center gap-3 mb-4">
-              <span className="relative flex h-3 w-3">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-3 w-3 bg-emerald-500"></span>
-              </span>
-              <p className="text-emerald-400/90 text-sm font-medium tracking-wide">
-                Currently available for freelance
-              </p>
+            {/* Status & Clock Ribbon */}
+            <div className="flex flex-wrap items-center gap-4 mb-8">
+               
+               <div className="flex items-center gap-2 bg-white/5 border border-white/10 backdrop-blur-md rounded-full px-4 py-1.5 w-max">
+                 <span className="relative flex h-2 w-2">
+                   <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                   <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+                 </span>
+                 <p className="text-zinc-300 text-xs font-mono uppercase tracking-wider">
+                   Available for freelance
+                 </p>
+               </div>
+
+               <div className="flex items-center gap-2 bg-white/5 border border-white/10 backdrop-blur-md rounded-full px-4 py-1.5 w-max">
+                 <Clock className="w-3 h-3 text-zinc-400" />
+                 <p className="text-zinc-300 text-xs font-mono uppercase tracking-wider">
+                   LOCAL TIME IN INDIA · {time ? time : "--:--"}
+                 </p>
+               </div>
+
             </div>
-            <p className="text-zinc-500 text-sm md:text-base max-w-sm">
-              Reach out if you're looking for a developer, have a question, or just want to connect.
+
+            <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter text-white mb-6 leading-[0.95]">
+              Let's craft the <br className="hidden md:block"/> 
+              <span className="italic font-serif text-zinc-400 font-light">future</span> together.
+            </h2>
+            
+            <p className="text-zinc-400 text-lg md:text-xl max-w-md font-light leading-relaxed">
+              If you’re looking for a product designer who codes, cares about motion, and obsesses over the smallest details—drop me a line.
             </p>
           </div>
-          <a href="mailto:hello@example.com" className="md:pl-8 inline-block mt-12 md:mt-24 text-lg md:text-xl font-medium text-white hover:text-zinc-300 transition-colors w-max relative group">
-            hello@rajeshkanna.com
-            <span className="absolute -bottom-2 left-0 w-0 h-[2px] bg-white transition-all duration-300 group-hover:w-full"></span>
-          </a>
-        </div>
 
-        {/* Links Grid with Magnetic Hover Physics */}
-        <div className="md:col-span-6 lg:col-span-5 grid grid-cols-2 gap-4 text-[13px] md:text-sm font-medium pt-8 md:pt-16">
-          <div className="flex flex-col space-y-4">
-            <span className="text-zinc-600 uppercase tracking-[0.2em] text-xs mb-2 font-bold">Navigation</span>
-            {['Home', 'About', 'Work', 'Experience', 'Contact'].map((link) => (
-              <motion.a 
-                key={link} 
-                href="#" 
-                whileHover={{ x: 8, color: "white" }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="text-zinc-400 hover:text-white transition-colors w-max"
-              >
-                {link}
-              </motion.a>
-            ))}
-          </div>
-          <div className="flex flex-col space-y-4">
-            <span className="text-zinc-600 uppercase tracking-[0.2em] text-xs mb-2 font-bold">Socials</span>
-            {['GitHub', 'LinkedIn', 'Twitter', 'Instagram'].map((network) => (
-              <motion.a 
-                key={network} 
-                href="#" 
-                whileHover={{ x: 8, color: "white" }}
-                transition={{ type: "spring", stiffness: 400, damping: 10 }}
-                className="text-zinc-400 hover:text-white transition-colors flex items-center gap-2 w-max group"
-              >
-                {network} 
-                <motion.span 
-                  initial={{ opacity: 0, x: -5, y: 5 }} 
-                  whileHover={{ opacity: 1, x: 0, y: 0 }}
-                  className="inherit"
-                >
-                  ↗
-                </motion.span>
-              </motion.a>
-            ))}
+          <div className="md:pl-8 mt-12 md:mt-24 w-max relative group/copy">
+            {/* Interactive Glassmorphic Email Button */}
+            <button 
+               onClick={handleCopy}
+               className="flex items-center gap-6 px-1 py-1 pr-6 bg-white/5 hover:bg-white/10 border border-white/10 hover:border-white/20 backdrop-blur-xl rounded-full transition-all duration-300 relative group/btn overflow-hidden"
+            >
+               {/* Shine effect */}
+               <div className="absolute inset-0 -translate-x-full group-hover/btn:animate-[shimmer_1.5s_infinite] bg-gradient-to-r from-transparent via-white/10 to-transparent skew-x-12 z-0" />
+               
+               <div className="w-14 h-14 rounded-full bg-white text-black flex items-center justify-center relative z-10 transition-transform duration-300 group-hover/btn:scale-95 shadow-[0_0_20px_rgba(255,255,255,0.2)]">
+                  {copied ? <Check className="w-6 h-6 text-emerald-600" /> : <Copy className="w-6 h-6" />}
+               </div>
+               
+               <div className="flex flex-col items-start relative z-10">
+                  <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{copied ? "Copied!" : "Drop me a line"}</span>
+                  <span className="text-lg md:text-xl font-medium text-white group-hover/btn:text-blue-200 transition-colors">hello@rajeshkanna.com</span>
+               </div>
+            </button>
           </div>
         </div>
 
+        {/* Right Side: Links & Figma UI Mock */}
+        <div className="md:col-span-6 lg:col-span-5 flex flex-col pt-8 md:pt-16 relative">
+          
+          {/* Floating Figma Toolbar (Designer Touch) */}
+          <motion.div
+             animate={{ y: [0, -10, 0] }}
+             transition={{ repeat: Infinity, duration: 5, ease: "easeInOut" }}
+             className="absolute top-0 right-0 hidden lg:flex bg-zinc-900 border border-zinc-800 rounded-full p-2 flex-col gap-3 shadow-2xl z-30"
+          >
+             <div className="w-8 h-8 rounded-full bg-zinc-800 flex items-center justify-center text-blue-400">
+                <MousePointer2 className="w-4 h-4 fill-blue-500/20" />
+             </div>
+             <div className="w-8 h-8 rounded-full hover:bg-zinc-800 flex items-center justify-center text-zinc-400 transition-colors cursor-pointer">
+                <Sparkles className="w-4 h-4" />
+             </div>
+             <div className="w-8 h-8 rounded-full hover:bg-zinc-800 flex items-center justify-center text-zinc-400 transition-colors cursor-pointer">
+                <Layout className="w-4 h-4" />
+             </div>
+          </motion.div>
+
+          <div className="grid grid-cols-2 gap-8 md:gap-16 text-[15px] font-medium mt-auto mb-10 w-full max-w-sm ml-auto">
+             <div className="flex flex-col space-y-5">
+               <span className="text-zinc-600 font-mono text-xs uppercase tracking-widest mb-2 border-b border-zinc-800 pb-2">Platform</span>
+               {['Dribbble', 'GitHub', 'LinkedIn', 'Twitter'].map((network) => (
+                 <a 
+                   key={network} 
+                   href="#" 
+                   className="text-zinc-400 hover:text-white transition-all w-max flex items-center gap-1 group/link"
+                 >
+                   {network}
+                   <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 translate-y-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:-translate-y-0 text-blue-400 transition-all duration-300" />
+                 </a>
+               ))}
+             </div>
+             
+             <div className="flex flex-col space-y-5">
+               <span className="text-zinc-600 font-mono text-xs uppercase tracking-widest mb-2 border-b border-zinc-800 pb-2">Menu</span>
+               {['Work', 'About', 'Experience', 'Contact'].map((link) => (
+                 <a 
+                   key={link} 
+                   href="#" 
+                   className="text-zinc-400 hover:text-white transition-all w-max relative overflow-hidden group/menu"
+                 >
+                   <span className="relative z-10">{link}</span>
+                   <span className="absolute left-0 bottom-0 w-0 h-px bg-white transition-all duration-300 group-hover/menu:w-full" />
+                 </a>
+               ))}
+             </div>
+          </div>
+
+        </div>
       </div>
 
-      {/* Interactive Rippling Huge Typography */}
-      <div className="w-full flex justify-center items-end mt-24 relative z-10 select-none overflow-hidden">
+      {/* --- MASKED HOVER GIANT TEXT --- */}
+      <div className="w-full flex justify-center items-end mt-32 relative select-none overflow-hidden h-[25vw] sm:h-[20vw] border-t border-zinc-900/50">
+        
+        {/* Base Layer: Dim outline text */}
         <h1 
-          className="font-black tracking-[-0.08em] uppercase whitespace-nowrap text-center bg-clip-text text-transparent bg-gradient-to-b from-white to-zinc-800/20 flex"
+          className="absolute bottom-0 font-black tracking-[-0.05em] uppercase whitespace-nowrap text-center text-transparent"
           style={{ 
-            fontSize: "17.5vw", 
-            lineHeight: "0.75", 
-            marginBottom: "-4.5vw" 
+            fontSize: "19vw", 
+            lineHeight: "0.8", 
+            marginBottom: "-4.5vw",
+            WebkitTextStroke: "1px rgba(255,255,255,0.05)"
           }}
         >
-          {giantText.map((char, i) => (
-            <motion.span
-              key={i}
-              whileHover={{ 
-                y: -30, 
-                scale: 1.1,
-                rotate: (i % 2 === 0 ? 1 : -1) * 3, // Alternate tilt
-                transition: { type: "spring", stiffness: 300, damping: 10 }
-              }}
-              className="inline-block relative hover:text-white transition-colors duration-200"
-              style={{ paddingBottom: '2vw' }} // Give the hover physics breathing room at the bottom crop
-            >
-              {char === " " ? "\u00A0" : char}
-            </motion.span>
-          ))}
+          {giantText}
         </h1>
+
+        {/* Hover Mask Layer: Vibrant & Filled */}
+        <motion.div
+           className="absolute inset-0 pointer-events-none z-10"
+           style={{ WebkitMaskImage: maskImage, maskImage }}
+        >
+           {/* The vibrant gradient that fills the text inside the mask */}
+           <div className="absolute inset-0 bg-gradient-to-r from-blue-500 via-purple-500 to-orange-500" />
+           {/* Inner Blueprint over the gradient */}
+           <div 
+             className="absolute inset-0 mix-blend-overlay opacity-50"
+             style={{
+               backgroundImage: `linear-gradient(rgba(255,255,255,1) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,1) 1px, transparent 1px)`,
+               backgroundSize: '20px 20px'
+             }}
+           />
+
+           {/* The actual text used to clip out the gradient */}
+           <h1 
+             className="absolute bottom-0 font-black tracking-[-0.05em] uppercase whitespace-nowrap text-center w-full bg-white text-black mix-blend-multiply"
+             style={{ 
+               fontSize: "19vw", 
+               lineHeight: "0.8", 
+               marginBottom: "-4.5vw",
+             }}
+           >
+             {giantText}
+           </h1>
+        </motion.div>
+
+        {/* Interactive Mouse Helper Text inside spotlight */}
+        <motion.div
+           className="absolute pointer-events-none z-20 mix-blend-difference hidden md:flex items-center gap-2"
+           style={{ x: smoothX, y: smoothY }}
+        >
+           <span className="w-2 h-2 rounded-full bg-white" />
+        </motion.div>
+
       </div>
 
     </footer>

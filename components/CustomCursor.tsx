@@ -30,11 +30,11 @@ export default function CustomCursor() {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
 
-      dot.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+      dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       
       // If pill is active, it follows exactly with the dot
       if (isHoveringWhoAmI.current) {
-         pill.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%)`;
+         pill.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
       }
     };
 
@@ -44,11 +44,11 @@ export default function CustomCursor() {
         ring.style.opacity = "0";
         dot.style.opacity = "0";
         pill.style.opacity = "1";
-        pill.style.transform = `translate(${mouse.current.x}px, ${mouse.current.y}px) translate(-50%, -50%) scale(1)`;
+        pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(1)`;
       } else if (isHoveringInteractive.current) {
         // Interactive mode (links/buttons)
         pill.style.opacity = "0";
-        pill.style.transform = `translate(${mouse.current.x}px, ${mouse.current.y}px) translate(-50%, -50%) scale(0.8)`;
+        pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(0.8)`;
         
         ring.style.opacity = "1";
         ring.style.width = "56px";
@@ -63,7 +63,7 @@ export default function CustomCursor() {
       } else {
         // Default mode
         pill.style.opacity = "0";
-        pill.style.transform = `translate(${mouse.current.x}px, ${mouse.current.y}px) translate(-50%, -50%) scale(0.8)`;
+        pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(0.8)`;
         
         ring.style.opacity = "0.8";
         ring.style.width = "42px";
@@ -85,7 +85,7 @@ export default function CustomCursor() {
         dot.style.width = "6px";
         dot.style.height = "6px";
       } else {
-        pill.style.transform = `translate(${mouse.current.x}px, ${mouse.current.y}px) translate(-50%, -50%) scale(0.95)`;
+        pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(0.95)`;
       }
     };
 
@@ -118,77 +118,67 @@ export default function CustomCursor() {
     // Ring follows with smooth lag
     const animate = () => {
       if (!isHoveringWhoAmI.current) {
-         ringPos.current.x += (mouse.current.x - ringPos.current.x) * 0.15;
-         ringPos.current.y += (mouse.current.y - ringPos.current.y) * 0.15;
-         ring.style.transform = `translate(${ringPos.current.x}px, ${ringPos.current.y}px) translate(-50%, -50%)`;
+         ringPos.current.x += (mouse.current.x - ringPos.current.x) * 0.22;
+         ringPos.current.y += (mouse.current.y - ringPos.current.y) * 0.22;
+         ring.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
       }
       rafId.current = requestAnimationFrame(animate);
     };
 
-    const addInteractiveListeners = () => {
-      // Standard interactives
-      const interactives = document.querySelectorAll(
-        'a, button, [role="button"], input, textarea, select, [data-cursor-hover]'
-      );
-      interactives.forEach((el) => {
-        el.addEventListener("mouseenter", onMouseEnterInteractive);
-        el.addEventListener("mouseleave", onMouseLeaveInteractive);
-      });
-
-      // Special Who Am I section
-      const whoAmISections = document.querySelectorAll('[data-cursor="who-am-i"]');
-      whoAmISections.forEach((el) => {
-        el.addEventListener("mouseenter", onMouseEnterWhoAmI);
-        el.addEventListener("mouseleave", onMouseLeaveWhoAmI);
-      });
-
-      return { interactives, whoAmISections };
+    // Use event delegation instead of attaching listeners to every element.
+    // This is massively more performant — one listener on body handles everything.
+    const onMouseOver = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (!target) return;
+      const interactive = target.closest('a, button, [role="button"], input, textarea, select, [data-cursor-hover]');
+      const whoAmI = target.closest('[data-cursor="who-am-i"]');
+      
+      if (whoAmI) {
+        if (!isHoveringWhoAmI.current) {
+          isHoveringWhoAmI.current = true;
+          updateCursorState();
+        }
+      } else if (interactive) {
+        if (!isHoveringInteractive.current) {
+          isHoveringInteractive.current = true;
+          isHoveringWhoAmI.current = false;
+          updateCursorState();
+        }
+      }
     };
 
-    window.addEventListener("mousemove", onMouseMove);
+    const onMouseOut = (e: Event) => {
+      const target = e.target as HTMLElement;
+      if (!target) return;
+      const relatedTarget = (e as MouseEvent).relatedTarget as HTMLElement | null;
+      
+      const interactive = target.closest('a, button, [role="button"], input, textarea, select, [data-cursor-hover]');
+      const whoAmI = target.closest('[data-cursor="who-am-i"]');
+
+      if (whoAmI && (!relatedTarget || !relatedTarget.closest('[data-cursor="who-am-i"]'))) {
+        isHoveringWhoAmI.current = false;
+        updateCursorState();
+      } else if (interactive && (!relatedTarget || !relatedTarget.closest('a, button, [role="button"], input, textarea, select, [data-cursor-hover]'))) {
+        isHoveringInteractive.current = false;
+        updateCursorState();
+      }
+    };
+
+    window.addEventListener("mousemove", onMouseMove, { passive: true });
     window.addEventListener("mousedown", onMouseDown);
     window.addEventListener("mouseup", onMouseUp);
+    document.body.addEventListener("mouseover", onMouseOver, { passive: true });
+    document.body.addEventListener("mouseout", onMouseOut, { passive: true });
 
-    const listeners = addInteractiveListeners();
     rafId.current = requestAnimationFrame(animate);
-
-    const observer = new MutationObserver(() => {
-      // Re-attach if DOM changes
-      const interactives = document.querySelectorAll(
-        'a, button, [role="button"], input, textarea, select, [data-cursor-hover]'
-      );
-      interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onMouseEnterInteractive);
-        el.removeEventListener("mouseleave", onMouseLeaveInteractive);
-        el.addEventListener("mouseenter", onMouseEnterInteractive);
-        el.addEventListener("mouseleave", onMouseLeaveInteractive);
-      });
-
-      const whoAmISections = document.querySelectorAll('[data-cursor="who-am-i"]');
-      whoAmISections.forEach((el) => {
-        el.removeEventListener("mouseenter", onMouseEnterWhoAmI);
-        el.removeEventListener("mouseleave", onMouseLeaveWhoAmI);
-        el.addEventListener("mouseenter", onMouseEnterWhoAmI);
-        el.addEventListener("mouseleave", onMouseLeaveWhoAmI);
-      });
-    });
-    observer.observe(document.body, { childList: true, subtree: true });
 
     return () => {
       window.removeEventListener("mousemove", onMouseMove);
       window.removeEventListener("mousedown", onMouseDown);
       window.removeEventListener("mouseup", onMouseUp);
+      document.body.removeEventListener("mouseover", onMouseOver);
+      document.body.removeEventListener("mouseout", onMouseOut);
       cancelAnimationFrame(rafId.current);
-      observer.disconnect();
-      
-      listeners.interactives.forEach((el) => {
-        el.removeEventListener("mouseenter", onMouseEnterInteractive);
-        el.removeEventListener("mouseleave", onMouseLeaveInteractive);
-      });
-      listeners.whoAmISections.forEach((el) => {
-        el.removeEventListener("mouseenter", onMouseEnterWhoAmI);
-        el.removeEventListener("mouseleave", onMouseLeaveWhoAmI);
-      });
     };
   }, []);
 
@@ -239,7 +229,7 @@ export default function CustomCursor() {
           background: "#000000",
           pointerEvents: "none",
           zIndex: 99999,
-          transition: "width 0.2s ease, height 0.2s ease, background 0.2s ease, opacity 0.2s ease",
+          transition: "width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), background 0.25s ease, opacity 0.25s ease",
           willChange: "transform",
         }}
       />
@@ -258,7 +248,7 @@ export default function CustomCursor() {
           zIndex: 99998,
           opacity: 0.8,
           transition:
-            "width 0.3s ease, height 0.3s ease, border-color 0.3s ease, opacity 0.3s ease, border-width 0.3s ease",
+            "width 0.3s cubic-bezier(0.16, 1, 0.3, 1), height 0.3s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.3s ease, opacity 0.3s ease, border-width 0.3s ease",
           willChange: "transform",
         }}
       />

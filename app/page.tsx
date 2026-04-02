@@ -9,6 +9,8 @@ import SkillsBubble from "@/components/ui/SkillsBubble";
 import Footer from "@/components/Footer";
 
 import FeaturedProjects from "@/components/FeaturedProjects";
+import UIUXDesignProcess from "@/components/UIUXDesignProcess";
+import CreativeParallax from "@/components/CreativeParallax";
 
 // Dynamic imports for heavy or client-only components
 const GeometricBackground = dynamic(() => import("@/components/GeometricBackground"), { ssr: false });
@@ -25,8 +27,10 @@ export default function Home() {
             <>
               <MarqueeDivider />
               <WhoAmI />
+              <CreativeParallax />
               <FeaturedProjects />
               <SkillsBubble />
+              <UIUXDesignProcess />
               <Footer />
             </>
           }

@@ -67,3 +67,22 @@ samp {
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid rgba(0, 0, 0, 0.05);
 }
+
+/* GPU Compositing for scroll-heavy elements */
+.sticky {
+  will-change: transform;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
+
+/* Promote parallax layers to their own compositing layer */
+.preserve-3d {
+  transform-style: preserve-3d;
+  -webkit-transform-style: preserve-3d;
+}
+
+/* Reduce paint flicker on transform animations */
+[style*="transform"] {
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+}
