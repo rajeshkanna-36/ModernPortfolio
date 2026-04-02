@@ -6,7 +6,7 @@ import ScrollTextReveal from "./ScrollTextReveal";
 import InfiniteMarquee from "./InfiniteMarquee";
 import FluidButton from "./ui/FluidButton";
 import InstagramPostCard from "./ui/InstagramPostCard";
-import FloatingDevIcons from "./ui/FloatingDevIcons";
+
 
 const InlineIcon = ({ type }: { type: "pencil" | "cursor" | "toggle" | "sparkle" }) => {
   switch (type) {
@@ -73,7 +73,7 @@ export default function WhoAmI() {
   return (
     <section
       ref={sectionRef}
-      className="relative min-h-screen flex items-center justify-center px-6 py-28 md:py-44 text-zinc-950 bg-white"
+      className="relative min-h-[70vh] flex flex-col justify-center px-6 pt-28 pb-16 md:pt-40 md:pb-24 text-zinc-950 bg-white"
       data-cursor="who-am-i"
     >
       {/* subtle mesh texture (dark on light) */}
@@ -147,7 +147,7 @@ export default function WhoAmI() {
               <FluidButton text="Get in Touch" className="mt-8 relative z-10" />
             </motion.div>
             
-            <FloatingDevIcons />
+
           </div>
         </div>
       </motion.div>

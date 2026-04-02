@@ -10,10 +10,10 @@ const GeometricBackground = dynamic(() => import("@/components/GeometricBackgrou
 const HomeParallaxScroll = dynamic(() => import("@/components/home/HomeParallaxScroll"), { ssr: false });
 
 const WhoAmI = dynamic(() => import("@/components/WhoAmI"));
-const CreativeParallax = dynamic(() => import("@/components/CreativeParallax"));
+
 const FeaturedProjects = dynamic(() => import("@/components/FeaturedProjects"));
 const SkillsBubble = dynamic(() => import("@/components/ui/SkillsBubble"));
-const UIUXDesignProcess = dynamic(() => import("@/components/UIUXDesignProcess"));
+
 const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
@@ -27,10 +27,10 @@ export default function Home() {
             <>
               <MarqueeDivider />
               <WhoAmI />
-              <CreativeParallax />
+
               <FeaturedProjects />
               <SkillsBubble />
-              <UIUXDesignProcess />
+
               <Footer />
             </>
           }

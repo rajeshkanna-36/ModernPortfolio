@@ -56,7 +56,7 @@ export default function Navbar() {
 
           {/* Links (Only visible on hover) */}
           <AnimatePresence mode="popLayout" initial={false}>
-            {hovered && (
+            {(hovered || !scrolled) && (
               <motion.div
                 key="links"
                 layout

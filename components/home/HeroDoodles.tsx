@@ -193,7 +193,7 @@ export default function HeroDoodles() {
 
       {/* ── "UX Design Portfolio" pill with shimmer ────────── */}
       <motion.div
-        className={`pointer-events-auto absolute left-1/2 -translate-x-1/2 top-16 sm:top-20 md:top-24 select-none hidden sm:block ${!discovered ? 'hint-pulse' : ''} rounded-full`}
+        className={`pointer-events-auto absolute left-1/2 -translate-x-1/2 top-28 sm:top-32 md:top-36 select-none hidden sm:block ${!discovered ? 'hint-pulse' : ''} rounded-full`}
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5, delay: 0.8, ease: [0.22, 1, 0.36, 1] }}

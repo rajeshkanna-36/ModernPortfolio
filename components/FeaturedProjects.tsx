@@ -75,7 +75,7 @@ export default function FeaturedProjects() {
       data-cursor="projects"
     >
       {/* Animated Minimalist Selection Box Header (Hero Section Style) */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12 relative w-full pt-8 pl-4">
+      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-24 md:mb-32 lg:mb-40 relative w-full pt-8 pl-4">
         
         <div className="flex items-start">
            <div className="relative inline-block mt-4 md:mt-0 pb-1 pr-1">
