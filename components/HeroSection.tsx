@@ -4,8 +4,11 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import Magnetic from "@/components/ui/Magnetic";
-import HeroDoodles from "@/components/home/HeroDoodles";
+import dynamic from "next/dynamic";
 
+const HeroDoodles = dynamic(() => import("@/components/home/HeroDoodles"), {
+  ssr: false,
+});
 const CYCLE_DURATION = 6000;
 const ANIM_DURATION = 1.0;
 const ANIM_EASE: [number, number, number, number] = [0.22, 1, 0.36, 1];

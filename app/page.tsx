@@ -2,19 +2,19 @@
 
 import dynamic from "next/dynamic";
 import HeroSection from "@/components/HeroSection";
-import WhoAmI from "@/components/WhoAmI";
 import MarqueeDivider from "@/components/MarqueeDivider";
 import HomeInteractions from "@/components/home/HomeInteractions";
-import SkillsBubble from "@/components/ui/SkillsBubble";
-import Footer from "@/components/Footer";
-
-import FeaturedProjects from "@/components/FeaturedProjects";
-import UIUXDesignProcess from "@/components/UIUXDesignProcess";
-import CreativeParallax from "@/components/CreativeParallax";
 
 // Dynamic imports for heavy or client-only components
 const GeometricBackground = dynamic(() => import("@/components/GeometricBackground"), { ssr: false });
 const HomeParallaxScroll = dynamic(() => import("@/components/home/HomeParallaxScroll"), { ssr: false });
+
+const WhoAmI = dynamic(() => import("@/components/WhoAmI"));
+const CreativeParallax = dynamic(() => import("@/components/CreativeParallax"));
+const FeaturedProjects = dynamic(() => import("@/components/FeaturedProjects"));
+const SkillsBubble = dynamic(() => import("@/components/ui/SkillsBubble"));
+const UIUXDesignProcess = dynamic(() => import("@/components/UIUXDesignProcess"));
+const Footer = dynamic(() => import("@/components/Footer"));
 
 export default function Home() {
   return (
