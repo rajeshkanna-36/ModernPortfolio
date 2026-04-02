@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 export interface ProjectFolderCardProps {
   title: string;
@@ -142,10 +143,13 @@ export default function ProjectFolderCard({
                 {layer?.startsWith("/") && (() => {
                   const [imgPath, pos] = layer.split('?pos=');
                   return (
-                    <img 
+                    <Image 
                       src={imgPath} 
-                      alt={`mockup layer ${originalIndex}`} 
-                      className="w-full h-full object-cover" 
+                      alt={`mockup layer ${originalIndex} for ${title}`} 
+                      fill
+                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      priority={originalIndex === 0}
+                      className="object-cover" 
                       style={pos ? { objectPosition: pos.replace(/_/g, " ") } : {}}
                     />
                   );

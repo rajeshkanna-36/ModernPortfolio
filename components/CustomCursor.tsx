@@ -29,13 +29,6 @@ export default function CustomCursor() {
     const onMouseMove = (e: MouseEvent) => {
       mouse.current.x = e.clientX;
       mouse.current.y = e.clientY;
-
-      dot.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
-      
-      // If pill is active, it follows exactly with the dot
-      if (isHoveringWhoAmI.current) {
-         pill.style.transform = `translate3d(${e.clientX}px, ${e.clientY}px, 0) translate(-50%, -50%)`;
-      }
     };
 
     const updateCursorState = () => {
@@ -44,11 +37,10 @@ export default function CustomCursor() {
         ring.style.opacity = "0";
         dot.style.opacity = "0";
         pill.style.opacity = "1";
-        pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(1)`;
+        // Pill is already updated in animate() or via direct sync if needed
       } else if (isHoveringInteractive.current) {
         // Interactive mode (links/buttons)
         pill.style.opacity = "0";
-        pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(0.8)`;
         
         ring.style.opacity = "1";
         ring.style.width = "56px";
@@ -63,7 +55,6 @@ export default function CustomCursor() {
       } else {
         // Default mode
         pill.style.opacity = "0";
-        pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(0.8)`;
         
         ring.style.opacity = "0.8";
         ring.style.width = "42px";
@@ -93,35 +84,21 @@ export default function CustomCursor() {
        updateCursorState();
     };
 
-    // Generic interactive hovering (links, buttons)
-    const onMouseEnterInteractive = () => {
-      isHoveringInteractive.current = true;
-      updateCursorState();
-    };
-
-    const onMouseLeaveInteractive = () => {
-      isHoveringInteractive.current = false;
-      updateCursorState();
-    };
-
-    // Who Am I section hovering
-    const onMouseEnterWhoAmI = () => {
-      isHoveringWhoAmI.current = true;
-      updateCursorState();
-    };
-
-    const onMouseLeaveWhoAmI = () => {
-      isHoveringWhoAmI.current = false;
-      updateCursorState();
-    };
-
-    // Ring follows with smooth lag
+    // Both Dot and Ring now updated in the same frame for perfect sync
     const animate = () => {
-      if (!isHoveringWhoAmI.current) {
-         ringPos.current.x += (mouse.current.x - ringPos.current.x) * 0.22;
-         ringPos.current.y += (mouse.current.y - ringPos.current.y) * 0.22;
-         ring.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
+      // 1. Move Dot instantly (or with tiny lerp for butter feel)
+      dot.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%)`;
+      
+      // 2. Move Pill instantly if active
+      if (isHoveringWhoAmI.current) {
+         pill.style.transform = `translate3d(${mouse.current.x}px, ${mouse.current.y}px, 0) translate(-50%, -50%) scale(1)`;
       }
+
+      // 3. Move Ring with smooth lag (Bumped to 0.3 for snappiness)
+      ringPos.current.x += (mouse.current.x - ringPos.current.x) * 0.3;
+      ringPos.current.y += (mouse.current.y - ringPos.current.y) * 0.3;
+      ring.style.transform = `translate3d(${ringPos.current.x}px, ${ringPos.current.y}px, 0) translate(-50%, -50%)`;
+      
       rafId.current = requestAnimationFrame(animate);
     };
 

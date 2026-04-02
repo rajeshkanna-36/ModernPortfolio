@@ -20,8 +20,16 @@ export default function Magnetic({ children, className, strength = 18 }: Magneti
     const el = ref.current;
     if (!el) return;
 
+    let cachedRect: DOMRect | null = null;
+
+    const onEnter = () => {
+      cachedRect = el.getBoundingClientRect();
+    };
+
     const onMove = (e: PointerEvent) => {
-      const r = el.getBoundingClientRect();
+      if (!cachedRect) return;
+      
+      const r = cachedRect;
       const dx = e.clientX - (r.left + r.width / 2);
       const dy = e.clientY - (r.top + r.height / 2);
       const nx = dx / (r.width / 2 || 1);
@@ -29,15 +37,19 @@ export default function Magnetic({ children, className, strength = 18 }: Magneti
       x.set(nx * strength);
       y.set(ny * strength);
     };
+
     const onLeave = () => {
+      cachedRect = null;
       x.set(0);
       y.set(0);
     };
 
+    el.addEventListener("pointerenter", onEnter);
     el.addEventListener("pointermove", onMove, { passive: true });
     el.addEventListener("pointerleave", onLeave);
 
     return () => {
+      el.removeEventListener("pointerenter", onEnter);
       el.removeEventListener("pointermove", onMove);
       el.removeEventListener("pointerleave", onLeave);
     };
