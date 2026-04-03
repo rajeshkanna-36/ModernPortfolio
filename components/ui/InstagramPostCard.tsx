@@ -128,7 +128,7 @@ export default function InstagramPostCard({ className = "" }: InstagramPostCardP
         {/* Minimal Footer */}
         <div className="flex items-center justify-between px-2 pt-3 pb-1">
           <div className="flex items-center gap-2.5">
-            <div className="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-zinc-100 border border-zinc-100">
+            <a href="https://www.linkedin.com/in/rajesh-kanna36/" target="_blank" rel="noopener noreferrer" className="relative w-9 h-9 rounded-full overflow-hidden flex-shrink-0 bg-zinc-100 border border-zinc-100">
               <Image
                 src="/rajesh-photo.jpg"
                 alt="Rajesh Kanna"
@@ -136,20 +136,20 @@ export default function InstagramPostCard({ className = "" }: InstagramPostCardP
                 className="object-cover"
                 sizes="36px"
               />
-            </div>
+            </a>
             <div className="flex flex-col">
               <span className="text-[13.5px] font-semibold text-zinc-900 leading-tight">@rajesh-kanna</span>
-              <span className="text-[12px] text-zinc-500 leading-tight">Linkedin</span>
+              <span className="text-[12px] text-zinc-500 leading-tight">LinkedIn</span>
             </div>
           </div>
 
-          <button className="flex items-center gap-1.5 px-4 py-2 bg-black hover:bg-zinc-800 text-white text-[13px] font-medium rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
+          <a href="https://www.linkedin.com/in/rajesh-kanna36/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 px-4 py-2 bg-black hover:bg-zinc-800 text-white text-[13px] font-medium rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-black">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" className="w-[14px] h-[14px]">
               <line x1="12" y1="5" x2="12" y2="19" />
               <line x1="5" y1="12" x2="19" y2="12" />
             </svg>
             Connect
-          </button>
+          </a>
         </div>
       </motion.div>
       </motion.div>

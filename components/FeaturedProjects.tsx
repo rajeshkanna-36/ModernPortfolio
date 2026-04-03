@@ -4,52 +4,10 @@ import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import ProjectFolderCard from "./ProjectFolderCard";
 import FluidButton from "./ui/FluidButton";
-import { FileCode2 } from "lucide-react"; // Using a matching file/node icon
+import { PROJECTS } from "@/lib/projects";
 
-const PROJECTS = [
-  {
-    title: "Cheers",
-    duration: "10 Weeks",
-    season: "Spring 2024",
-    description: "Empathetic payment system redefining tipping through transparent, autonomous, and private guest experiences",
-    role: "UX and Interaction Designer",
-    layers: [
-      "/projects/cheers/1.png?pos=top",
-      "/projects/cheers/2.png",
-      "/projects/cheers/3.png",
-      "/projects/cheers/4.png"
-    ],
-    layerType: "mixed" as const,
-  },
-  {
-    title: "Dream Line",
-    duration: "10 Weeks",
-    season: "Spring 2025",
-    description: "Immersive, autonomous pod designed to enhance mobility, comfort, and planning for families at theme parks",
-    role: "UX and Industrial Designer",
-    layers: [
-      "/projects/kodex/light.png?pos=top",
-      "/projects/kodex/dark.png?pos=0%_33%",
-      "/projects/kodex/light.png?pos=0%_66%",
-      "/projects/kodex/dark.png?pos=bottom"
-    ],
-    layerType: "mixed" as const,
-  },
-  {
-    title: "SWAYAM",
-    duration: "12 Weeks",
-    season: "Summer 2024",
-    description: "National educational platform offering immersive university-level courses, engaging video lectures, and rich progression tracking.",
-    role: "UX Researcher & UI Designer",
-    layers: [
-      "/projects/swayam/2.png?pos=top",
-      "/projects/swayam/3.png",
-      "/projects/swayam/4.png",
-      "/projects/swayam/5.png"
-    ],
-    layerType: "mixed" as const,
-  },
-];
+
+
 
 export default function FeaturedProjects() {
   const containerRef = useRef<HTMLElement>(null);
@@ -72,6 +30,7 @@ export default function FeaturedProjects() {
       ref={containerRef}
       style={{ scale, opacity, y, willChange: 'transform, opacity' }}
       className="relative w-full max-w-7xl mx-auto px-6 pt-12 pb-32 bg-white z-0 origin-bottom" 
+      id="work"
       data-cursor="projects"
     >
       {/* Animated Minimalist Selection Box Header (Hero Section Style) */}
@@ -176,7 +135,9 @@ export default function FeaturedProjects() {
             viewport={{ once: true, amount: 0.2 }}
             transition={{ duration: 0.6, delay: idx * 0.15, ease: [0.22, 1, 0.36, 1] }}
           >
-            <ProjectFolderCard {...project} />
+            <a href={`/projects/${project.slug}`} className="no-underline block">
+              <ProjectFolderCard {...project} />
+            </a>
           </motion.div>
         ))}
       </div>

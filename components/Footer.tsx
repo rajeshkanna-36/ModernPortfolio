@@ -37,7 +37,7 @@ export default function Footer() {
   }
 
   const handleCopy = () => {
-    navigator.clipboard.writeText("hello@rajeshkanna.com");
+    navigator.clipboard.writeText("rajeshkanna.swe@gmail.com");
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
   };
@@ -122,7 +122,7 @@ export default function Footer() {
                
                <div className="flex flex-col items-start relative z-10">
                   <span className="text-xs font-mono text-zinc-400 uppercase tracking-widest">{copied ? "Copied!" : "Drop me a line"}</span>
-                  <span className="text-lg md:text-xl font-medium text-white group-hover/btn:text-blue-200 transition-colors">hello@rajeshkanna.com</span>
+                  <span className="text-lg md:text-xl font-medium text-white group-hover/btn:text-blue-200 transition-colors">rajeshkanna.swe@gmail.com</span>
                </div>
             </button>
           </div>
@@ -151,16 +151,23 @@ export default function Footer() {
           <div className="grid grid-cols-2 gap-8 md:gap-16 text-[15px] font-medium mt-auto mb-10 w-full max-w-sm ml-auto">
              <div className="flex flex-col space-y-5">
                <span className="text-zinc-600 font-mono text-xs uppercase tracking-widest mb-2 border-b border-zinc-800 pb-2">Platform</span>
-               {['Dribbble', 'GitHub', 'LinkedIn', 'Twitter'].map((network) => (
-                 <a 
-                   key={network} 
-                   href="#" 
-                   className="text-zinc-400 hover:text-white transition-all w-max flex items-center gap-1 group/link"
-                 >
-                   {network}
-                   <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 translate-y-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:-translate-y-0 text-blue-400 transition-all duration-300" />
-                 </a>
-               ))}
+                {[
+                  { name: 'LinkedIn', url: 'https://www.linkedin.com/in/rajesh-kanna36/' },
+                  { name: 'GitHub', url: 'https://github.com/rajeshkanna-36' },
+                  { name: 'Dribbble', url: '#' },
+                  { name: 'Twitter', url: '#' },
+                ].map((network) => (
+                  <a 
+                    key={network.name} 
+                    href={network.url}
+                    target={network.url !== '#' ? '_blank' : undefined}
+                    rel={network.url !== '#' ? 'noopener noreferrer' : undefined}
+                    className="text-zinc-400 hover:text-white transition-all w-max flex items-center gap-1 group/link"
+                  >
+                    {network.name}
+                    <ArrowUpRight className="w-3 h-3 opacity-0 -translate-x-2 translate-y-2 group-hover/link:opacity-100 group-hover/link:translate-x-0 group-hover/link:-translate-y-0 text-blue-400 transition-all duration-300" />
+                  </a>
+                ))}
              </div>
              
              <div className="flex flex-col space-y-5">

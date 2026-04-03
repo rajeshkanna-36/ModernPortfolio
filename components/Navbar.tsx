@@ -4,7 +4,12 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
-const NAV_ITEMS = ["Work", "About Me"];
+const NAV_ITEMS = [
+  { label: "Work", href: "#work" },
+  { label: "About Me", href: "#about-me" },
+];
+
+const RESUME_URL = "https://drive.google.com/file/d/11aE-a2Jd96tMgOc3B-FtHHwrXaDNJjQj/view?usp=drive_link";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -68,13 +73,17 @@ export default function Navbar() {
               >
                 <div className="hidden md:flex items-center gap-6 h-full">
                   {NAV_ITEMS.map((item) => (
-                    <Link
-                      key={item}
-                      href={`#${item.toLowerCase().replace(' ', '-')}`}
+                    <a
+                      key={item.label}
+                      href={item.href}
+                      onClick={(e) => {
+                        e.preventDefault();
+                        document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                      }}
                       className="text-[14px] font-medium text-zinc-600 hover:text-zinc-950 transition-colors whitespace-nowrap"
                     >
-                      {item}
-                    </Link>
+                      {item.label}
+                    </a>
                   ))}
                 </div>
               </motion.div>
@@ -128,17 +137,19 @@ export default function Navbar() {
         {/* Separated Resume Pill (Black) (Image 9) */}
         <AnimatePresence mode="popLayout">
           {!scrolled && (
-            <motion.button
+            <motion.a
               layout
-              onClick={() => document.getElementById('resume')?.scrollIntoView({ behavior: 'smooth' })}
-              className="hidden md:flex pointer-events-auto bg-[#18181b] text-white px-7 h-[52px] rounded-full items-center justify-center text-[15px] font-semibold hover:bg-black transition-colors shadow-sm whitespace-nowrap overflow-hidden border-none outline-none shrink-0 z-10 origin-left"
+              href={RESUME_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hidden md:flex pointer-events-auto bg-[#18181b] text-white px-7 h-[52px] rounded-full items-center justify-center text-[15px] font-semibold hover:bg-black transition-colors shadow-sm whitespace-nowrap overflow-hidden border-none outline-none shrink-0 z-10 origin-left no-underline"
               initial={{ opacity: 0, scale: 0.8, x: -20 }}
               animate={{ opacity: 1, scale: 1, x: 0, filter: "blur(0px)" }}
               exit={{ opacity: 0, scale: 0.4, x: -60, filter: "blur(8px)" }}
               transition={{ type: "spring", stiffness: 500, damping: 30, mass: 0.5 }}
             >
               Resume
-            </motion.button>
+            </motion.a>
           )}
         </AnimatePresence>
 
@@ -169,13 +180,17 @@ export default function Navbar() {
                   </span>
                 </div>
                 {NAV_ITEMS.map((item) => (
-                  <Link
-                    key={item}
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                  <a
+                    key={item.label}
+                    href={item.href}
                     className="group flex items-center justify-between px-2 py-4 border-b border-zinc-200/60 last:border-0"
-                    onClick={() => setOpen(false)}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      setOpen(false);
+                      document.querySelector(item.href)?.scrollIntoView({ behavior: 'smooth' });
+                    }}
                   >
-                    <span className="text-3xl font-semibold tracking-tighter text-zinc-900">{item}</span>
+                    <span className="text-3xl font-semibold tracking-tighter text-zinc-900">{item.label}</span>
                     <motion.div 
                       initial={{ opacity: 0, x: -10 }}
                       animate={{ opacity: 1, x: 0 }}
@@ -187,11 +202,14 @@ export default function Navbar() {
                         <polyline points="12 5 19 12 12 19"></polyline>
                       </svg>
                     </motion.div>
-                  </Link>
+                  </a>
                 ))}
                 
-                <button 
-                   className="group flex items-center justify-between px-2 py-4 mt-2 border-t border-zinc-200/60 w-full"
+                <a 
+                   href={RESUME_URL}
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   className="group flex items-center justify-between px-2 py-4 mt-2 border-t border-zinc-200/60 w-full no-underline"
                    onClick={() => setOpen(false)}
                 >
                   <span className="text-3xl font-semibold tracking-tighter text-zinc-900">Resume</span>
@@ -202,7 +220,7 @@ export default function Navbar() {
                        <line x1="12" y1="15" x2="12" y2="3"></line>
                     </svg>
                   </div>
-                </button>
+                </a>
               </div>
             </motion.div>
           </>

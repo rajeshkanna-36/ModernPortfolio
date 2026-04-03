@@ -74,6 +74,7 @@ export default function WhoAmI() {
     <section
       ref={sectionRef}
       className="relative min-h-[70vh] flex flex-col justify-center px-6 pt-28 pb-16 md:pt-40 md:pb-24 text-zinc-950 bg-white"
+      id="about-me"
       data-cursor="who-am-i"
     >
       {/* subtle mesh texture (dark on light) */}
@@ -144,7 +145,7 @@ export default function WhoAmI() {
               viewport={{ once: true, amount: 0.5 }}
               transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1], delay: 0.4 }}
             >
-              <FluidButton text="Get in Touch" className="mt-8 relative z-10" />
+              <FluidButton text="Get in Touch" className="mt-8 relative z-10" onClick={() => window.open('https://mail.google.com/mail/?view=cm&to=rajeshkanna.swe@gmail.com&su=Hello%20Rajesh!', '_blank')} />
             </motion.div>
             
 
