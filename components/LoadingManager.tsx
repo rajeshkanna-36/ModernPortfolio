@@ -42,18 +42,15 @@ export default function LoadingManager({ children }: { children: React.ReactNode
         )}
       </AnimatePresence>
       <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        animate={{ opacity: isLoading ? 0 : 1, y: isLoading ? 10 : 0 }}
-        transition={{ duration: 0.6, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isLoading ? 0 : 1 }}
+        transition={{ 
+          duration: 0.5, 
+          delay: 0.1, // Even faster sync
+          ease: "easeOut" 
+        }}
       >
-        {/*
-          By changing the key when loading finishes, we force React to remount the entire children tree.
-          This guarantees all Framer Motion entrance animations (like in HeroSection) restart perfectly
-          in sync with the loading screen fading out.
-        */}
-        <div key={isLoading ? "loading" : "ready"}>
-          {children}
-        </div>
+        {children}
       </motion.div>
     </>
   );

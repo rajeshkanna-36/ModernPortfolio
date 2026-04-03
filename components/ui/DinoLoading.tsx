@@ -84,6 +84,8 @@ export default function DinoLoading({ onComplete }: { onComplete?: () => void })
               style={{ imageRendering: 'pixelated' }}
               priority
               unoptimized
+              // @ts-ignore
+              fetchPriority="high"
             />
           </motion.div>
 
@@ -123,8 +125,10 @@ export default function DinoLoading({ onComplete }: { onComplete?: () => void })
                   animate={{ x: ["0%", "-50%"] }}
                   transition={{ duration: 1.5, repeat: Infinity, ease: "linear" }}
               >
-                  <Image src="/assets/other/track.png" alt="track" width={800} height={12} className="h-[6px] md:h-[12px] w-full" priority unoptimized />
-                  <Image src="/assets/other/track.png" alt="track" width={800} height={12} className="h-[6px] md:h-[12px] w-full" priority unoptimized />
+                  <Image src="/assets/other/track.png" alt="track" width={800} height={12} className="h-[6px] md:h-[12px] w-full" priority unoptimized // @ts-ignore 
+                  fetchPriority="high" />
+                  <Image src="/assets/other/track.png" alt="track" width={800} height={12} className="h-[6px] md:h-[12px] w-full" priority unoptimized // @ts-ignore 
+                  fetchPriority="high" />
               </motion.div>
           </div>
         </div>
@@ -147,9 +151,9 @@ export default function DinoLoading({ onComplete }: { onComplete?: () => void })
           {/* Progress Bar */}
           <div className="w-full h-[3px] md:h-1 bg-[#535353]/10 rounded-full overflow-hidden">
             <motion.div 
-              className="h-full bg-[#535353]"
-              initial={{ width: 0 }}
-              animate={{ width: `${progress}%` }}
+              className="h-full bg-[#535353] origin-left"
+              initial={{ scaleX: 0 }}
+              animate={{ scaleX: progress / 100 }}
               transition={{ duration: 0.3 }}
             />
           </div>

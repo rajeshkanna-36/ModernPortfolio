@@ -237,7 +237,8 @@ export default function HeroSection() {
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.8 }}
+          transition={{ duration: 0.8, delay: 0.2 }} // Previously 2.2s
+
           className="mt-8 sm:mt-12 flex items-center justify-center gap-6"
         >
           <div className="h-px w-8 bg-zinc-200" />
@@ -251,7 +252,8 @@ export default function HeroSection() {
         <motion.div
            initial={{ opacity: 0, scale: 0.8, rotate: -10 }}
            animate={{ opacity: 1, scale: 1, rotate: 0 }}
-           transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+           transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }} // Previously 2.5s
+
            className="absolute -right-24 top-1/2 -translate-y-1/2 hidden lg:block pointer-events-none group/arrow"
         >
           <svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" className="opacity-40">

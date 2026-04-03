@@ -147,7 +147,7 @@ export default function ProjectFolderCard({
                       src={imgPath} 
                       alt={`mockup layer ${originalIndex} for ${title}`} 
                       fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                      sizes="(max-width: 380px) 100vw, 300px"
                       priority={originalIndex === 0}
                       className="object-cover" 
                       style={pos ? { objectPosition: pos.replace(/_/g, " ") } : {}}
