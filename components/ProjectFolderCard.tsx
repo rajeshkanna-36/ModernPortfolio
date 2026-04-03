@@ -141,7 +141,18 @@ export default function ProjectFolderCard({
                 style={{ borderRadius: "inherit" }}
               >
                 {layer?.startsWith("/") && (() => {
-                  const [imgPath, pos] = layer.split('?pos=');
+                  const [imgPath, queryString] = layer.split('?');
+                  
+                  // Extract simple query params if they exist
+                  let pos = "center";
+                  let fit = "cover";
+                  
+                  if (queryString) {
+                    const params = new URLSearchParams(queryString);
+                    if (params.has("pos")) pos = params.get("pos")!.replace(/_/g, " ");
+                    if (params.has("fit")) fit = params.get("fit")!;
+                  }
+
                   return (
                     <Image 
                       src={imgPath} 
@@ -149,8 +160,8 @@ export default function ProjectFolderCard({
                       fill
                       sizes="(max-width: 380px) 100vw, 300px"
                       priority={originalIndex === 0}
-                      className="object-cover" 
-                      style={pos ? { objectPosition: pos.replace(/_/g, " ") } : {}}
+                      className={fit === 'contain' ? "object-contain p-8" : "object-cover"} 
+                      style={{ objectPosition: pos }}
                     />
                   );
                 })()}
@@ -159,7 +170,7 @@ export default function ProjectFolderCard({
               {/* === CHEERS PROJECT DOODLES (Music / Tipping) === */}
               <AnimatePresence>
                 {/* 1. Music Notes (Right Card) */}
-                {originalIndex === 1 && title === "Cheers" && isHovered && (
+                {originalIndex === 1 && title === "Cheers!" && isHovered && (
                   <motion.div 
                     initial={{ opacity: 0, y: 20, rotate: -15, scale: 0.5 }}
                     animate={{ opacity: 1, y: 0, rotate: 10, scale: 1 }}
@@ -180,7 +191,7 @@ export default function ProjectFolderCard({
                   </motion.div>
                 )}
                 {/* 2. Curved Swoosh Arrow (Left Card) */}
-                {originalIndex === 3 && title === "Cheers" && isHovered && (
+                {originalIndex === 3 && title === "Cheers!" && isHovered && (
                   <motion.div 
                     initial={{ opacity: 0, x: 20, rotate: 30, scale: 0.5 }}
                     animate={{ opacity: 1, x: 0, rotate: -10, scale: 1 }}
@@ -197,7 +208,7 @@ export default function ProjectFolderCard({
                   </motion.div>
                 )}
                 {/* 3. Asterisk Emphasis (Middle Card) */}
-                {originalIndex === 2 && title === "Cheers" && isHovered && (
+                {originalIndex === 2 && title === "Cheers!" && isHovered && (
                   <motion.div 
                     initial={{ opacity: 0, y: 30, rotate: 0, scale: 0.5 }}
                     animate={{ opacity: 1, y: -20, rotate: 45, scale: 1 }}
@@ -218,7 +229,7 @@ export default function ProjectFolderCard({
               {/* === DREAM LINE PROJECT DOODLES (Theme Park Pod) === */}
               <AnimatePresence>
                 {/* 1. Sparkles (Left Card) */}
-                {originalIndex === 3 && title === "Dream Line" && isHovered && (
+                {originalIndex === 3 && title === "Kodex" && isHovered && (
                   <motion.div 
                     initial={{ opacity: 0, x: 20, rotate: 20, scale: 0.5 }}
                     animate={{ opacity: 1, x: 0, rotate: -10, scale: 1 }}
@@ -233,7 +244,7 @@ export default function ProjectFolderCard({
                   </motion.div>
                 )}
                 {/* 2. Abstract Dream Cloud (Middle Card) */}
-                {originalIndex === 2 && title === "Dream Line" && isHovered && (
+                {originalIndex === 2 && title === "Kodex" && isHovered && (
                   <motion.div 
                     initial={{ opacity: 0, y: 20, rotate: -20, scale: 0.5 }}
                     animate={{ opacity: 1, y: -25, rotate: 5, scale: 1 }}
@@ -249,7 +260,7 @@ export default function ProjectFolderCard({
                   </motion.div>
                 )}
                 {/* 3. Swirl Loop (Right Card) */}
-                {originalIndex === 1 && title === "Dream Line" && isHovered && (
+                {originalIndex === 1 && title === "Kodex" && isHovered && (
                   <motion.div 
                     initial={{ opacity: 0, x: -20, rotate: -40, scale: 0.5 }}
                     animate={{ opacity: 1, x: 0, rotate: 10, scale: 1 }}

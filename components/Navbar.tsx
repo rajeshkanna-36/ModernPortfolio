@@ -3,6 +3,7 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
 
 const NAV_ITEMS = [
   { label: "Work", href: "#work" },
@@ -12,6 +13,7 @@ const NAV_ITEMS = [
 const RESUME_URL = "https://drive.google.com/file/d/11aE-a2Jd96tMgOc3B-FtHHwrXaDNJjQj/view?usp=drive_link";
 
 export default function Navbar() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const [hovered, setHovered] = useState(false);
@@ -32,6 +34,11 @@ export default function Navbar() {
     window.addEventListener("keydown", onKeyDown);
     return () => window.removeEventListener("keydown", onKeyDown);
   }, []);
+
+  // Render nothing on Case Study pages (AFTER all hooks)
+  if (pathname?.startsWith('/projects/')) {
+    return null;
+  }
 
   return (
     <>

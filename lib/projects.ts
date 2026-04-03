@@ -18,6 +18,7 @@ export interface ProjectData {
   };
   keyScreens: string[];
   highlights: string[];
+  figmaUrl?: string;
 }
 
 export const PROJECTS: ProjectData[] = [
@@ -52,11 +53,12 @@ export const PROJECTS: ProjectData[] = [
       methods: ["Workshop", "Interview", "Survey", "Secondary"],
     },
     keyScreens: [
-      "/projects/cheers/1.png",
-      "/projects/cheers/2.png",
-      "/projects/cheers/3.png",
-      "/projects/cheers/4.png",
-      "/projects/cheers/5.png",
+      "/projects/cheers/mockups/2.png",
+      "/projects/cheers/mockups/3.png",
+      "/projects/cheers/mockups/4.png",
+      "/projects/cheers/mockups/5.png",
+      "/projects/cheers/mockups/6.png",
+      "/projects/cheers/mockups/7.png",
     ],
     highlights: [
       "Transparent tipping flow",
@@ -66,14 +68,14 @@ export const PROJECTS: ProjectData[] = [
     ],
   },
   {
-    slug: "dream-line",
-    title: "Dream Line",
-    duration: "10 Weeks",
-    season: "Spring 2025",
+    slug: "kodex",
+    title: "Kodex",
+    duration: "6 Weeks",
+    season: "Winter 2024",
     description:
-      "Immersive, autonomous pod designed to enhance mobility, comfort, and planning for families at theme parks",
-    role: "UX and Industrial Designer",
-    projectType: "College Case Study",
+      "A forward-thinking brand identity and highly converting desktop website for an AI innovation company.",
+    role: "Lead Visual & Web Designer",
+    projectType: "Brand Identity & Web Design",
     layers: [
       "/projects/kodex/light.png?pos=top",
       "/projects/kodex/dark.png?pos=0%_33%",
@@ -82,28 +84,28 @@ export const PROJECTS: ProjectData[] = [
     ],
     layerType: "mixed",
     overview:
-      "Dream Line reimagines the theme park experience through an immersive, autonomous pod system that enhances mobility, comfort, and planning for families. The design focuses on reducing friction points families face at large-scale entertainment venues.",
+      "Kodex is an AI-driven solutions company focusing on education, defense, and enterprise. Our goal was to design a brand identity and a premium desktop web experience that communicates advanced intelligence, enterprise trust, and sleek modernity.",
     roleDescription:
-      "As UX and Industrial Designer, I conceptualized the pod experience from end to end — from user research with families to physical form factor prototyping and the digital interface that controls the pod's navigation and entertainment systems.",
+      "As Lead Visual and Web Designer, I developed the brand's aesthetic direction, establishing a flexible design system capable of beautiful Light and Dark modes. I designed the complete desktop experience to optimize for B2B conversions.",
     researchPlan: {
-      subtitle: "Understanding the family theme park experience",
+      subtitle: "Designing for AI enterprise trust",
       stats: [
-        { value: "8", label: "Families" },
-        { value: "15", label: "Interviews" },
-        { value: "50+", label: "Responses" },
-        { value: "30+", label: "Articles" },
+        { value: "4", label: "Hero Concepts" },
+        { value: "2", label: "Color Themes" },
+        { value: "10K+", label: "Target Client Value" },
+        { value: "8", label: "Sections Built" },
       ],
-      methods: ["Field Study", "Interview", "Survey", "Prototyping"],
+      methods: ["Competitive Analysis", "Wireframing", "Visual Design", "Prototyping"],
     },
     keyScreens: [
       "/projects/kodex/light.png",
       "/projects/kodex/dark.png",
     ],
     highlights: [
-      "Autonomous navigation",
-      "Family-centric design",
-      "Comfort-first UX",
-      "Seamless park integration",
+      "Dual Theme Architecture",
+      "B2B Conversion Focus",
+      "Enterprise Tech Aesthetic",
+      "Dynamic Grid Layouts",
     ],
   },
   {
@@ -116,7 +118,7 @@ export const PROJECTS: ProjectData[] = [
     role: "UX Researcher & UI Designer",
     projectType: "College Case Study",
     layers: [
-      "/projects/swayam/2.png?pos=top",
+      "/projects/swayam/logo.png?pos=center&fit=contain",
       "/projects/swayam/3.png",
       "/projects/swayam/4.png",
       "/projects/swayam/5.png",
@@ -148,51 +150,6 @@ export const PROJECTS: ProjectData[] = [
       "Immersive video experience",
       "Rich progress tracking",
       "Accessible design system",
-    ],
-  },
-  {
-    slug: "musicaly",
-    title: "Musicaly",
-    duration: "8 Weeks",
-    season: "Fall 2024",
-    description:
-      "A modern music streaming platform focusing on artist-fan connection and high-fidelity audio experiences.",
-    role: "UI/UX Designer",
-    projectType: "Mobile Application Design",
-    layers: [
-      "/projects/musicaly/home.png",
-      "/projects/musicaly/player.png",
-      "/projects/musicaly/Artist.png",
-      "/projects/musicaly/Subscription.png",
-    ],
-    layerType: "portrait",
-    overview:
-      "Musicaly is a next-generation music streaming app designed to bridge the gap between artists and listeners. The project involved creating a seamless user journey from discovery to immersive playback, with a focus on personalized curation and high-quality visuals.",
-    roleDescription:
-      "As the lead UI/UX Designer, I was responsible for the entire design lifecycle, including user research, wireframing, high-fidelity prototyping, and creating a cohesive design system that reflects the brand's energetic yet clean aesthetic.",
-    researchPlan: {
-      subtitle: "Designing for the modern listener",
-      stats: [
-        { value: "15", label: "Users" },
-        { value: "10", label: "Interviews" },
-        { value: "80", label: "Surveys" },
-        { value: "20", label: "Benchmarks" },
-      ],
-      methods: ["User Interviews", "Competitive Audit", "Wireframing", "Usability Testing"],
-    },
-    keyScreens: [
-      "/projects/musicaly/home.png",
-      "/projects/musicaly/player.png",
-      "/projects/musicaly/Artist.png",
-      "/projects/musicaly/Subscription.png",
-      "/projects/musicaly/Language.png",
-      "/projects/musicaly/sign up page.png",
-    ],
-    highlights: [
-      "Immersive Player UI",
-      "Artist Connection Hub",
-      "Personalized Discovery",
-      "Sleek Dark Mode Design",
     ],
   },
 ];

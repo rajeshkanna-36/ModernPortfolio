@@ -1,7 +1,7 @@
 "use client";
 
-import { useRef } from "react";
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef, useState, useEffect } from "react";
+import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import ProjectFolderCard from "./ProjectFolderCard";
 import FluidButton from "./ui/FluidButton";
 import { PROJECTS } from "@/lib/projects";
@@ -11,6 +11,7 @@ import { PROJECTS } from "@/lib/projects";
 
 export default function FeaturedProjects() {
   const containerRef = useRef<HTMLElement>(null);
+  const [showUpcomingMessage, setShowUpcomingMessage] = useState(false);
   
   // Track this section's position to trigger the parallax exit effect.
   // It starts when the section's end reaches the bottom of the viewport,
@@ -24,6 +25,13 @@ export default function FeaturedProjects() {
   const scale = useTransform(scrollYProgress, [0, 1], [1, 0.9]);
   const opacity = useTransform(scrollYProgress, [0.3, 1], [1, 0]);
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "15%"]);
+
+  useEffect(() => {
+    if (showUpcomingMessage) {
+      const timer = setTimeout(() => setShowUpcomingMessage(false), 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [showUpcomingMessage]);
 
   return (
     <motion.section 
@@ -108,10 +116,38 @@ export default function FeaturedProjects() {
            </div>
         </div>
         
-        <div className="flex flex-col items-start md:items-end md:ml-auto">
-          {/* See All Button */}
-          <div className="relative z-20 shrink-0 mt-8 md:mt-0 mb-4">
-            <FluidButton text="See All Projects" />
+        <div className="flex flex-col items-start md:items-end md:ml-auto relative">
+          {/* See All Button with Doodle Logic */}
+          <div className="relative z-20 shrink-0 mt-8 md:mt-0 mb-4 inline-block">
+            <FluidButton text="See All Projects" onClick={() => setShowUpcomingMessage(true)} />
+            
+            {/* The Upcoming Message Doodle */}
+            <AnimatePresence>
+              {showUpcomingMessage && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10, rotate: -10, scale: 0.8 }}
+                  animate={{ opacity: 1, y: -45, rotate: 6, scale: 1 }}
+                  exit={{ opacity: 0, y: -20, rotate: -5, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  className="absolute -top-6 -right-16 md:-right-24 z-50 pointer-events-none flex flex-col items-center drop-shadow-md"
+                >
+                  <div className="bg-[#f97316] text-white text-xs font-bold uppercase tracking-widest px-4 py-2 rounded-2xl whitespace-nowrap shadow-xl border border-orange-400">
+                    Coming Soon!
+                  </div>
+                  {/* Speech bubble pointy bit using SVG stroke for doodle feel */}
+                  <svg width="20" height="20" viewBox="0 0 100 100" fill="#f97316" className="rotate-[190deg] -mt-2">
+                    <path d="M10 10 L40 60 L70 10 Z" />
+                  </svg>
+                  {/* Decorative Sparkles */}
+                  <svg width="30" height="30" viewBox="0 0 100 100" className="absolute -top-4 -right-4" fill="none" stroke="#f97316" strokeWidth="6" strokeLinecap="round">
+                    <line x1="50" y1="20" x2="50" y2="5" />
+                    <line x1="80" y1="50" x2="95" y2="50" />
+                    <line x1="75" y1="25" x2="85" y2="15" />
+                    <circle cx="50" cy="50" r="10" fill="#f97316" />
+                  </svg>
+                </motion.div>
+              )}
+            </AnimatePresence>
           </div>
           <motion.p 
             className="text-zinc-500 font-medium text-sm md:text-base max-w-sm text-left md:text-right"

@@ -1,6 +1,8 @@
 import { notFound } from "next/navigation";
 import { PROJECTS, getProjectBySlug } from "@/lib/projects";
 import CaseStudyTemplate from "@/components/CaseStudyTemplate";
+import SwayamCaseStudy from "@/components/SwayamCaseStudy";
+import KodexCaseStudy from "@/components/KodexCaseStudy";
 
 // Generate static params for all projects
 export function generateStaticParams() {
@@ -15,6 +17,14 @@ export default async function ProjectPage({ params }: { params: Promise<{ slug: 
 
   if (!project) {
     notFound();
+  }
+
+  if (slug === 'swayam') {
+    return <SwayamCaseStudy project={project} />;
+  }
+
+  if (slug === 'kodex') {
+    return <KodexCaseStudy project={project} />;
   }
 
   return <CaseStudyTemplate project={project} />;
