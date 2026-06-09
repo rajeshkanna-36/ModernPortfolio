@@ -1,0 +1,1027 @@
+- Section: Case Study
+    - Section: Home Screen@3x 1
+    - Section: image 4
+    - Text: "Buildo simplifies construction material ordering, making procurement fast, transparent and effortless for builders, contractors, and homeowners."
+    - Text: "Designed to streamline how contractors and homeowners purchase materials, Buildo enables efficient ordering, transparent pricing, and real-time delivery visibility."
+      - Text: "Project Name"
+      - Text: "Buildo"
+      - Text: "Designed By"
+      - Text: "Rajesh Kanna"
+      - Text: "Published"
+      - Text: "June 10, 2026"
+      - Text: "Category"
+      - Text: "App Design"
+      - Text: "Tools Used"
+      - Section: skill-icons:figma-light
+        - Section: Group
+          - Section: Vector
+          - Section: Clip path group
+            - Section: SVGXwgIudex
+              - Section: Vector
+            - Section: Group
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+      - Section: skill-icons:photoshop
+        - Section: Group
+          - Section: Vector
+          - Section: Vector
+      - Section: image 6
+    - Text: "Timeline"
+    - Text: "A structured journey from identifying user challenges to delivering a seamless construction material ordering experience."
+        - Section: Rectangle 1
+        - Section: Rectangle 2
+        - Section: Rectangle 3
+        - Section: Rectangle 4
+        - Section: Rectangle 5
+        - Section: Rectangle 12
+        - Section: Rectangle 13
+        - Section: Rectangle 14
+        - Section: Rectangle 15
+        - Section: Rectangle 16
+        - Section: Rectangle 17
+        - Section: Rectangle 6
+        - Section: Rectangle 7
+        - Section: Rectangle 8
+        - Section: Rectangle 9
+        - Section: Rectangle 10
+        - Section: Rectangle 11
+        - Section: Rectangle 18
+        - Section: Rectangle 19
+        - Section: Rectangle 20
+        - Section: Rectangle 21
+        - Section: Rectangle 22
+        - Section: Rectangle 23
+        - Section: Rectangle 24
+        - Section: Rectangle 25
+        - Section: Rectangle 26
+        - Section: Rectangle 27
+        - Section: Rectangle 28
+    - Section: Shadow R
+    - Section: shadow l
+    - Section: Vector 4
+        - Section: Vector
+        - Text: "Research"
+        - Text: "Week 01-02"
+        - Section: Vector
+        - Text: "UX/Wireframes"
+        - Text: "Week 03-04"
+        - Section: Vector
+        - Text: "UI & Visual Identity"
+        - Text: "Week 05-06"
+        - Section: Vector
+        - Text: "Final Design"
+        - Text: "Week 07"
+    - Section: Vector 3
+    - Section: illustration
+    - Section: mockup 1
+          - Section: Vector 1
+          - Section: Vector 2
+      - Section: Ellipse 5
+      - Section: mockup 2
+      - Section: Shadow R
+            - Section: Vector 1
+            - Section: Vector 2
+        - Text: "Buildo"
+        - Text: "Construction Commerce App"
+          - Text: "GET"
+        - Section: octicon:share-16
+          - Section: Vector
+      - Section: Line 9
+      - Section: Line 20
+      - Section: Line 21
+      - Section: Line 22
+      - Section: Line 23
+      - Section: Line 24
+      - Section: Line 10
+      - Section: Line 11
+      - Section: Line 12
+      - Section: Line 13
+      - Section: Logo
+        - Section: Vector 1
+        - Section: Vector 2
+      - Text: "BUILDO"
+      - Section: image 7
+    - Text: "Construction material ordering is slow, fragmented, and hard to manage. Buildo makes it simple and transparent."
+      - Text: "Problem"
+      - Text: "Ordering construction materials is complicated. Buildo makes it simple."
+      - Text: "Construction material procurement is slow, fragmented, and dependent on multiple suppliers, leading to inconsistent pricing, coordination challenges, and project delays."
+      - Section: problem
+      - Text: "Solution"
+      - Text: "Buildo brings all construction material sourcing into a single platform."
+      - Text: "It allows users to browse materials, compare prices, place orders instantly, and track deliveries in real time reducing effort and improving transparency and efficiency."
+      - Section: Solution
+    - Section: Vector 5
+      - Section: image 5
+    - Text: "User Research"
+    - Section: Vector 4
+    - Text: "Understanding user needs in construction material procurement"
+    - Text: "We explored how construction professionals source materials to understand their challenges, behaviors and unmet needs."
+    - Section: mockup
+      - Section: Shadow R
+      - Text: "What users told us"
+      - Text: "82%"
+      - Text: "70%"
+      - Text: "3 of 5"
+      - Text: "reported frustration with inconsistent and unpredictable material pricing across vendors"
+      - Text: "experienced delayed or incorrect deliveries to construction sites"
+      - Text: "users expressed the need for real-time order tracking after confirmation"
+      - Section: image 8
+    - Text: "Key Insights"
+    - Section: Vector 4
+    - Text: "Uncovering key insights from construction material procurement workflows"
+    - Text: "Research-driven insights uncovering critical pain points, user behaviors, and opportunity areas in real-world construction procurement systems"
+      - Text: "01"
+        - Text: "Pain Point"
+      - Text: "Contractors don’t struggle with vendors. they struggle with uncertainty."
+      - Text: "Pricing, availability, and delivery timelines are highly inconsistent, making procurement decisions risky and time-sensitive."
+      - Text: "02"
+        - Text: "Behavioral Insight"
+      - Text: "Phone calls and messaging apps are still the primary procurement system."
+      - Text: "Around 76% of site managers depend on phone calls or WhatsApp to place and manage orders, highlighting the lack of reliable digital adoption in this workflow."
+      - Text: "03"
+        - Text: "UX Finding"
+      - Text: "Reordering is the most frequent action in procurement cycles."
+      - Text: "Most purchases are repeat orders of standard materials. A simplified reorder experience significantly reduces effort and decision-making time."
+      - Text: "04"
+        - Text: "Opportunity Area"
+      - Text: "Multi-site delivery management is a major gap in existing systems."
+      - Text: "Contractors often manage multiple active sites simultaneously, yet there is no efficient way to organize, label, and switch delivery addresses seamlessly."
+    - Section: mockup
+    - Section: Gemini_Generated_Image_94qq2d94qq2d94qq@3x 1
+      - Text: "The insight that shaped Buildo: construction teams don’t need more supplier calls. they need complete visibility and control in one place."
+        - Text: "Methods used"
+        - Text: "User interviews"
+        - Text: "Field observation"
+        - Text: "Surveys"
+        - Text: "Empathy mapping"
+      - Section: image 10
+    - Text: "User personas represent key student types, highlighting their goals, behaviors, and pain points to guide design decisions."
+    - Text: "User Persona"
+    - Section: Vector 4
+    - Section: Rectangle 29
+    - Section: Rectangle 30
+    - Section: Vector 2
+    - Section: Vector 6
+    - Section: Vector 5
+    - Section: Vector 7
+      - Section: persona@3x 1
+        - Text: "Bharathvaj"
+        - Text: "Construction Contractor, 36 Age"
+        - Text: "Goals"
+      - Text: "Quick material sourcing without delays Clear and consistent pricing from vendors Manage multiple site orders efficiently"
+      - Text: "Active site manager handling multiple projects and daily procurement decisions under tight deadlines."
+        - Text: "Lifestyle"
+      - Text: "Buildo simplifies procurement by bringing ordering, tracking, and management into one place."
+        - Text: "Buildo Insight"
+        - Text: "Pain Points"
+      - Text: "Unstable pricing across suppliers Delayed and incorrect deliveries Heavy dependency on calls and WhatsApp No proper system to track orders or deliveries"
+    - Section: crane
+    - Section: rope
+      - Section: Vector 1
+      - Section: Vector 3
+      - Section: image 11
+    - Text: "User Journey Map"
+    - Section: Vector 4
+        - Section: persona@3x 1
+      - Text: "Bharathvaj"
+      - Text: "Construction Contractor"
+      - Section: Ellipse 5
+      - Text: "Quickly source and manage construction materials without delays or confusion"
+        - Text: "Goals"
+      - Text: "STAGES"
+        - Section: solar:running-broken
+          - Section: Group
+            - Section: Vector
+            - Section: Vector
+            - Section: Vector
+            - Section: Vector
+        - Text: "User Action"
+        - Section: hugeicons:touch-10
+          - Section: Group
+            - Section: Vector
+            - Section: Vector
+            - Section: Vector
+        - Text: "Touchpoints"
+        - Section: icon-park-outline:caution
+          - Section: Group
+            - Section: Vector
+            - Section: Vector
+        - Text: "Pain Points"
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+        - Text: "Emotion "
+      - Section: Line 25
+      - Section: Line 26
+      - Section: Line 27
+        - Section: Emoji
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+        - Text: "Satisfaction level"
+        - Section: Emoji
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+      - Section: Divider
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+        - Text: "Awareness / Need Identification"
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+        - Text: "Ordering & Confirmation"
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+        - Text: "Delivery & Execution"
+          - Section: Vector
+          - Section: Vector
+        - Text: "Searching for Materials"
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+        - Text: "Post-Order & Reordering"
+      - Section: Vector 8
+      - Section: Vector 9
+      - Section: Vector 10
+      - Section: Vector 11
+      - Section: image 13
+      - Section: Line 25
+      - Section: Line 29
+      - Section: Line 30
+      - Section: Line 13
+      - Section: Line 26
+      - Section: Line 27
+      - Section: Line 28
+      - Text: "Realizes material is required for ongoing construction work"
+      - Text: "Phone calls, site discussions, WhatsApp messages"
+      - Text: "No clear vendor availability Time-consuming to contact multiple suppliers"
+      - Text: "Inconsistent pricing Delayed responses No centralized information"
+      - Text: "No proper order tracking Risk of wrong or delayed delivery"
+      - Text: "Delivery delays Incorrect materials received No live updates"
+      - Text: "Repeating same communication every time No order history or quick reorder option"
+      - Text: "Phone calls, WhatsApp chats, local suppliers"
+      - Text: "Calls / manual order confirmation"
+      - Text: "Delivery vehicle, supplier updates (if any)"
+      - Text: "Same vendors, repeated calls"
+      - Text: "Contacts multiple vendors to compare price and availability"
+      - Text: "Places order based on verbal confirmation or trust"
+      - Text: "Waits for material delivery at construction site"
+      - Text: "Reorders frequently used materials again"
+        - Section: Emoji
+              - Section: Vector
+              - Section: Mask group
+                - Section: Group
+                  - Section: Vector
+                  - Section: Vector
+                - Section: Vector
+              - Section: Vector
+              - Section: Vector
+        - Text: "Frustrated"
+        - Section: Vector 12
+        - Section: Vector 14
+        - Section: Vector 13
+        - Section: Vector 15
+        - Section: Emoji
+              - Section: Vector
+              - Section: Mask group
+                - Section: Group
+                  - Section: Vector
+                  - Section: Vector
+                - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+        - Text: "stressed"
+        - Section: Emoji
+              - Section: Vector
+              - Section: Mask group
+                - Section: Group
+                  - Section: Vector
+                  - Section: Vector
+                - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+        - Text: "Uncertain"
+        - Section: Emoji
+              - Section: Vector
+              - Section: Mask group
+                - Section: Group
+                  - Section: Vector
+                  - Section: Vector
+                - Section: Vector
+              - Section: Vector
+              - Section: Vector
+        - Text: "Dissatisfied"
+        - Section: Emoji
+              - Section: Vector
+              - Section: Mask group
+                - Section: Group
+                  - Section: Vector
+                  - Section: Vector
+                - Section: Vector
+              - Section: Vector
+              - Section: Vector
+              - Section: Vector
+        - Text: "Tired"
+        - Text: "Key insight from the journey"
+      - Section: Ellipse 5
+      - Text: "The entire procurement process is fragmented, dependent on manual communication, and lacks real-time visibility causing friction and delays at every single stage. BUILDO replaces every phone call with a tap."
+      - Section: shadow
+    - Section: mockup@3x 1
+        - Text: "Problem Definition"
+    - Text: "One insight shaped everything."
+        - Text: "82%"
+        - Text: "of users struggled with inconsistent material pricing across suppliers"
+        - Text: "70%"
+        - Text: "experienced delayed or incorrect deliveries to construction sites"
+      - Text: "Construction teams need a faster and more transparent way to procure materials but existing workflows are fragmented and heavily dependent on manual coordination."
+        - Text: "Problem Statement"
+        - Text: "01"
+        - Text: "Unclear pricing and supplier availability make procurement decisions difficult."
+        - Text: "02"
+        - Text: "Phone calls and messaging apps create delays, miscommunication and inefficient coordination."
+        - Text: "03"
+        - Text: "Lack of order visibility and delivery tracking leads to uncertainty on-site."
+        - Text: "How Might We"
+        - Text: "Buildo was designed to simplify the entire procurement journey."
+    - Text: "How might we create a construction procurement experience that is transparent, efficient and reliable from material selection to site delivery?"
+    - Section: Vector 19
+    - Section: Vector 34
+    - Section: Vector 28
+    - Section: Vector 29
+    - Section: Vector 30
+    - Section: Vector 31
+    - Section: Vector 32
+    - Section: Vector 33
+    - Section: Vector 20
+    - Section: Vector 21
+    - Section: Vector 23
+    - Section: Vector 26
+    - Section: Vector 25
+    - Section: Vector 24
+    - Section: Vector 19
+    - Section: Vector 16
+    - Section: Vector 17
+    - Section: Vector 18
+      - Section: flow
+    - Text: "We mapped the user flow to understand how users move through the system and identify friction points in their journey."
+    - Text: "User Flow"
+    - Section: Vector 4
+    - Section: Mockup@3x 1
+        - Text: "Log in"
+        - Text: "Sign up"
+        - Text: "Set delivery location"
+        - Text: "Home Screen"
+            - Text: "Search"
+            - Text: "Categories"
+            - Text: "Cart"
+            - Text: "Orders"
+            - Text: "Profiles"
+        - Text: "Products Screen"
+        - Text: "Product detail page"
+        - Text: "Add To cart"
+        - Text: "view cart"
+        - Text: "Select delivery address"
+        - Text: "Choose payment method"
+        - Text: "review & place order"
+        - Text: "order confirmed"
+        - Text: "live delivery tracking"
+    - Section: Vector 63
+    - Section: Vector 64
+    - Section: Vector 65
+    - Section: Vector 61
+    - Section: Vector 62
+    - Section: Vector 34
+    - Section: Vector 48
+    - Section: Vector 57
+    - Section: Vector 70
+    - Section: Vector 36
+    - Section: Vector 45
+    - Section: Vector 69
+    - Section: Vector 33
+    - Section: Vector 49
+    - Section: Vector 58
+    - Section: Vector 71
+    - Section: Vector 37
+    - Section: Vector 46
+    - Section: Vector 52
+    - Section: Vector 55
+    - Section: Vector 35
+    - Section: Vector 50
+    - Section: Vector 59
+    - Section: Vector 72
+    - Section: Vector 38
+    - Section: Vector 47
+    - Section: Vector 53
+    - Section: Vector 56
+    - Section: Vector 32
+    - Section: Vector 39
+    - Section: Vector 60
+    - Section: Ellipse 5
+      - Section: image 14
+    - Text: "Information Architecture"
+    - Section: Vector 4
+    - Text: "We defined the information architecture to organize the app structure and ensure a clear and intuitive navigation system."
+    - Section: Mockup@3x 1
+        - Text: "Home"
+          - Text: "Delivery Location"
+          - Text: "Notifications"
+          - Text: "Search"
+          - Text: "Search"
+          - Text: "Machinery Rental"
+          - Text: "Tools & Equipment"
+          - Text: "Cart summary"
+          - Text: "Delivery address"
+          - Text: "Order summary"
+          - Text: "Order history"
+          - Text: "Filter"
+          - Text: "Live tracking"
+          - Text: "Address Management"
+          - Text: "Payment methods"
+          - Text: "Settings"
+        - Text: "Categories"
+        - Text: "Cart"
+        - Text: "Orders"
+        - Text: "Profile"
+          - Text: "Payment method"
+          - Text: "Order confirmed"
+          - Text: "Live Tracking"
+    - Section: Vector 66
+    - Section: Vector 67
+    - Section: Vector 68
+          - Text: "Building Materials"
+          - Text: "Electricals"
+          - Text: "Plumbing"
+          - Text: "Flash Sale Banner"
+          - Text: "Categories "
+          - Text: "Featured Materials"
+          - Text: "Personal loan"
+          - Text: "Help centre"
+          - Text: "Logout"
+          - Text: "Reorder"
+          - Text: "Order details"
+      - Section: Ellipse 5
+        - Section: Ellipse 5
+          - Section: Rectangle 31
+          - Text: "Colors"
+            - Text: "#FFD700"
+            - Text: "#1F1B10"
+            - Text: "#F6F1E9"
+            - Text: "#808080"
+          - Text: "Primary"
+          - Text: "Error field "
+          - Text: "Secondary"
+          - Text: "Inverted"
+          - Text: "Outlined"
+          - Section: pencil
+            - Section: Vector
+          - Section: pencil
+            - Section: Vector
+            - Section: Vector
+            - Text: "Labels"
+            - Section: Vector
+            - Text: "Labels"
+          - Section: Section - Search Bar
+            - Section: Input
+                - Text: "Search bar"
+              - Section: Icon
+          - Section: Icon
+          - Section: Section - Search Bar
+            - Section: Input
+                - Text: "Search bar"
+              - Section: Icon
+          - Section: Icon
+          - Section: Icon
+            - Section: Vector
+            - Section: Icon
+        - Section: Shadow R
+        - Section: Shadow R
+      - Section: Ellipse 5
+        - Section: Rectangle 31
+        - Text: "Typography"
+      - Text: "Montserrat"
+      - Text: "Nunito Sans"
+      - Text: "Aa"
+          - Text: "Regular"
+          - Text: "Regular"
+          - Text: "Semi bold"
+          - Text: "Semi bold"
+          - Text: "Bold"
+          - Text: "Bold"
+      - Section: image 15
+    - Text: "Design System"
+    - Section: Vector 4
+    - Text: "We defined the design system to establish visual consistency, improve usability, and create a unified product experience."
+      - Section: image 16
+    - Text: "Wireframe"
+    - Section: Vector 4
+    - Text: "We created wireframes to define layout structure and validate user experience flow before final UI design."
+    - Section: mockup
+    - Section: Ellipse 6
+    - Section: Login screen
+        - Section: Logo
+          - Section: Vector 1
+        - Text: "Log in or sign up"
+        - Section: Input
+          - Text: "Phone number or email"
+        - Section: Input
+          - Text: "Continue"
+        - Section: Group 3
+          - Section: Line 2
+          - Text: "or"
+          - Section: Line 3
+          - Section: Group 2
+              - Section: Group 1
+                - Section: Vector
+                - Section: Vector
+                - Section: Vector
+                - Section: Vector
+              - Section: Vector
+        - Text: "Terms & Conditions Apply"
+      - Section: radix-icons:cross-2
+        - Section: Vector
+      - Section: TopNavigation
+        - Section: StatusBar
+          - Section: Left Side
+            - Text: "9:41"
+          - Section: Dynamic Island
+          - Section: Right Side
+            - Section: Signal, Wifi, Battery
+              - Section: Icon / Mobile Signal
+              - Section: Wifi
+                - Section: Wifi-path
+                - Section: Wifi-path
+                - Section: Wifi-path
+              - Section: _StatusBar-battery
+                - Section: Outline
+                - Section: Battery End
+                - Section: Fill
+    - Section: Category Listing
+      - Section: TopNavigation
+        - Section: StatusBar
+          - Section: Left Side
+            - Text: "9:41"
+          - Section: Dynamic Island
+          - Section: Right Side
+            - Section: Signal, Wifi, Battery
+              - Section: Icon / Mobile Signal
+              - Section: Wifi
+                - Section: Wifi-path
+                - Section: Wifi-path
+                - Section: Wifi-path
+              - Section: _StatusBar-battery
+                - Section: Outline
+                - Section: Battery End
+                - Section: Fill
+      - Section: Header - TopAppBar
+          - Section: Button
+            - Section: User profile photo
+              - Section: User profile photo
+          - Section: Heading 1
+            - Text: "BUILDO"
+        - Section: Button
+            - Section: Icon
+      - Section: Main Content Canvas
+        - Section: Page Header:margin
+          - Section: Page Header
+            - Section: Heading 2
+              - Text: "Categories"
+              - Text: "Browse our comprehensive catalog of industrial materials and tools."
+        - Section: Search Bar
+          - Section: Input
+              - Text: "Search categories..."
+              - Section: Icon
+        - Section: Featured Promotion Banner:margin
+          - Section: Featured Promotion Banner
+                  - Text: "SALE"
+              - Section: Heading 3
+                - Text: "Heavy Machinery Rental"
+                  - Text: "Up to 20% off on weekly rentals"
+            - Section: Link
+              - Section: Link:shadow
+                - Section: Icon
+        - Section: Category List
+          - Section: Link - Category Item 1
+                  - Section: Icon
+                - Section: Heading 3
+                  - Text: "Tools & Equipment"
+                  - Text: "Power tools, hand tools (142 items)"
+              - Section: Icon
+          - Section: Link - Category Item 2
+                  - Section: Icon
+                - Section: Heading 3
+                  - Text: "Building Materials"
+                  - Text: "Cement, steel, wood (356 items)"
+              - Section: Icon
+          - Section: Link - Category Item 3
+                  - Section: Icon
+                - Section: Heading 3
+                  - Text: "Electricals"
+                  - Text: "Wiring, switches, panels (89 items)"
+              - Section: Icon
+          - Section: Link - Category Item 4
+                  - Section: Icon
+                - Section: Heading 3
+                  - Text: "Plumbing"
+                  - Text: "Pipes, fittings, valves (112 items)"
+              - Section: Icon
+      - Section: BottomNavBar
+        - Section: Link
+            - Section: Icon
+            - Text: "Home"
+        - Section: Link
+            - Section: Icon
+            - Text: "Categories"
+        - Section: Link
+            - Section: Icon
+            - Text: "Cart"
+        - Section: Link
+            - Section: Icon
+            - Text: "Orders"
+        - Section: Link
+            - Section: Icon
+            - Text: "Profile"
+        - Section: Group
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+          - Section: Vector
+        - Text: "13+ Screens"
+    - Section: Splash Screen
+        - Section: Logo
+          - Section: Vector 1
+          - Section: Vector 2
+        - Text: "BUILDO"
+      - Section: TopNavigation
+        - Section: StatusBar
+          - Section: Left Side
+            - Text: "9:41"
+          - Section: Dynamic Island
+          - Section: Right Side
+            - Section: Signal, Wifi, Battery
+              - Section: Icon / Mobile Signal
+              - Section: Wifi
+                - Section: Wifi-path
+                - Section: Wifi-path
+                - Section: Wifi-path
+              - Section: _StatusBar-battery
+                - Section: Outline
+                - Section: Battery End
+                - Section: Fill
+    - Section: Splash Screen
+        - Section: Logo
+          - Section: Vector 1
+          - Section: Vector 2
+        - Text: "BUILDO"
+      - Section: TopNavigation
+        - Section: StatusBar
+          - Section: Left Side
+            - Text: "9:41"
+          - Section: Dynamic Island
+          - Section: Right Side
+            - Section: Signal, Wifi, Battery
+              - Section: Icon / Mobile Signal
+              - Section: Wifi
+                - Section: Wifi-path
+                - Section: Wifi-path
+                - Section: Wifi-path
+              - Section: _StatusBar-battery
+                - Section: Outline
+                - Section: Battery End
+                - Section: Fill
+    - Section: Shadow R
+    - Section: Shadow R
+    - Text: "Let's start exploring what we've built."
+    - Section: mock up 
+    - Section: mock up 
+    - Section: mock up 
+    - Section: mockup 4
+    - Section: mock up 
+        - Text: "Grid System"
+    - Section: mockup
+      - Section: mockup
+      - Section: Home Screen
+        - Section: Main
+          - Section: Section - Search Bar
+            - Section: Input
+                - Text: "Search materials, tools..."
+              - Section: Icon
+          - Section: Section - Promotional Banner (Bento Style)
+            - Section: Gradient
+                  - Text: "FLASH SALE"
+                - Section: Heading 2
+                  - Text: "20% Off on Premium Cement"
+                - Section: Button
+                  - Text: "Shop Now"
+              - Section: image 3
+          - Section: Section - Horizontal Categories
+              - Section: Heading 3
+                - Text: "Categories"
+              - Section: Button
+                - Text: "View All"
+                    - Section: Icon
+                  - Text: "Cement"
+                    - Section: Icon
+                  - Text: "Steel"
+                    - Section: Icon
+                  - Text: "Bricks"
+                    - Section: Icon
+                  - Text: "Sand"
+                    - Section: Icon
+                  - Text: "Tools"
+          - Section: Section - Featured Products Grid
+              - Section: Heading 3
+                - Text: "Featured Materials"
+              - Section: Product Card 1
+                    - Section: Steel Rebar
+                    - Section: Heading 4
+              - Section: Product Card 2
+                    - Section: Red Bricks
+                    - Section: Heading 4
+              - Section: Product Card 3
+                    - Section: River Sand
+                    - Section: Heading 4
+              - Section: Product Card 4
+                    - Section: Power Drill
+                    - Section: Heading 4
+        - Section: Header - TopAppBar
+              - Section: User profile photo
+                - Text: "Delivering to"
+                  - Text: "600032, Chennai"
+                  - Section: Icon
+          - Section: Button
+              - Section: Icon
+        - Section: TopNavigation
+          - Section: StatusBar
+            - Section: Left Side
+              - Text: "9:41"
+            - Section: Dynamic Island
+            - Section: Right Side
+              - Section: Signal, Wifi, Battery
+                - Section: Icon / Mobile Signal
+                - Section: Wifi
+                  - Section: Wifi-path
+                  - Section: Wifi-path
+                  - Section: Wifi-path
+                - Section: _StatusBar-battery
+                  - Section: Outline
+                  - Section: Battery End
+                  - Section: Fill
+        - Section: BottomNavBar
+          - Section: Button:css-transform
+            - Section: Button
+                - Section: Icon
+                  - Text: "Home"
+          - Section: Button
+              - Section: Icon
+                - Text: "Categories"
+          - Section: Button
+              - Section: Icon
+                - Text: "Cart"
+          - Section: Button
+              - Section: Icon
+                - Text: "Orders"
+          - Section: Button
+              - Section: Icon
+                - Text: "Profile"
+      - Section: Rectangle 32
+      - Section: Rectangle 33
+      - Section: Rectangle 34
+      - Section: Rectangle 35
+    - Section: Ellipse 6
+    - Section: Vector 73
+    - Text: "Gutter 16"
+    - Text: "Margin 16 px"
+    - Section: Vector 74
+    - Text: "370 px"
+    - Text: "402 px"
+    - Text: "Delivery Location"
+    - Text: "Users set where materials should be delivered via GPS, manual search, or a saved site address. Critical first step before browsing begins."
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+    - Text: "Stepping Into a Smarter Procurement Experience"
+    - Text: "Home Screen"
+    - Text: "The main dashboard. Shows a flash sale banner, category shortcuts, and featured materials. Designed for fast discovery and quick re-entry into browsing."
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+      - Section: BottomNavBar
+        - Section: Button:css-transform
+          - Section: Button
+              - Section: Icon
+                - Text: "Home"
+        - Section: Button
+            - Section: Icon
+              - Text: "Categories"
+        - Section: Button
+            - Section: Icon
+              - Text: "Cart"
+        - Section: Button
+            - Section: Icon
+              - Text: "Orders"
+        - Section: Button
+            - Section: Icon
+              - Text: "Profile"
+    - Section: Vector 75
+    - Section: Vector 76
+              - Section: Icon
+            - Text: "Cement"
+              - Section: Icon
+            - Text: "Steel"
+              - Section: Icon
+            - Text: "Bricks"
+              - Section: Icon
+            - Text: "Sand"
+              - Section: Icon
+            - Text: "Tools"
+    - Section: Vector 77
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+    - Text: "Categories Screen"
+    - Text: "Product Listing"
+    - Text: "Full catalog browser. Lists all material and tool categories with item counts. Includes a search bar and a highlighted machinery rental banner."
+    - Text: "Shows filtered products within a category. Supports sort and filter. Each card shows product name, brand, price per unit, and an add-to-cart button."
+      - Section: Featured Promotion Banner
+              - Text: "SALE"
+          - Section: Heading 3
+            - Text: "Heavy Machinery Rental"
+              - Text: "Up to 20% off on weekly rentals"
+        - Section: Link
+          - Section: Link:shadow
+            - Section: Icon
+      - Text: "Promotional rental banner  A contextual sale banner inside the categories screen highlights heavy machinery rental deals converting passive browsing into active engagement with high-value inventory."
+    - Section: Vector 75
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+    - Text: "Product Detail"
+    - Text: "Cart"
+    - Text: "Deep-dive on a single product. Shows unit selector (Bag/Pallet/Ton) quantity stepper, full specs (grade, weight, setting time) and description. Main conversion screen."
+    - Text: "Summary of all items before checkout. Shows item names, quantities, and total price. Gateway to the checkout funnel."
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+    - Section: Vector 77
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+      - Text: "Checkout"
+      - Text: "Two-part screen delivery address selection and order summary. Users pick a saved site or add a new one, review items, and choose a payment method before placing the order."
+      - Section: mockup 5
+      - Section: Checkout Screen 1
+      - Section: pop up@3x 1
+    - Text: "Order Confirmation"
+    - Text: "Post-purchase success screen. Confirms the order was placed, shows the order number, and gives the user two paths — view order or continue shopping."
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+      - Section: mock 4
+      - Section: Order Tracking
+        - Section: Main
+          - Section: Order Summary & Map Area
+                - Section: Heading 2
+                  - Text: "Order #B-84729"
+                  - Text: "Estimated Delivery: Today, 2:30 PM"
+                - Text: "Out for Delivery"
+            - Section: Map View Placeholder
+              - Section: Overlay Gradients for Depth
+              - Section: Driver Info Floating Card
+                - Section: Driver Info Floating Card:shadow
+                    - Section: Driver Profile
+                - Section: Button - Call Driver
+                    - Section: Icon
+          - Section: Tracking Timeline
+            - Section: Heading 3
+              - Text: "Order Status"
+              - Section: Vertical Line
+              - Section: Active Line Overlay
+              - Section: Step 1: Placed
+                    - Text: "Order Placed"
+                    - Text: "08:45 AM, Oct 24"
+                    - Section: Icon
+              - Section: Step 2: Confirmed
+                    - Text: "Confirmed"
+                    - Text: "09:12 AM, Oct 24"
+                    - Section: Icon
+              - Section: Step 3: Processing
+                    - Text: "Processing at Hub"
+                    - Text: "10:30 AM, Oct 24"
+                    - Section: Icon
+              - Section: Step 4: Out for Delivery (Active)
+                    - Text: "Out for Delivery"
+                    - Text: "Driver is approaching your site."
+              - Section: Step 5: Delivered (Pending)
+                    - Text: "Delivered"
+                    - Text: "Pending"
+          - Section: Action Buttons
+            - Section: Button
+                - Section: Icon
+              - Text: "Contact Support"
+            - Section: Button
+                - Section: Icon
+              - Text: "View Order Details"
+          - Section: BottomNavBar
+            - Section: Button
+                  - Section: Icon
+                - Text: "Home"
+            - Section: Button
+                  - Section: Icon
+                - Text: "Categories"
+            - Section: Button
+                  - Section: Icon
+                - Text: "Cart"
+            - Section: Button:css-transform
+              - Section: Button
+                    - Section: Icon
+                  - Text: "Orders"
+            - Section: Button
+                  - Section: Icon
+                - Text: "Profile"
+        - Section: Header - TopAppBar
+            - Section: Button - Go back:margin
+              - Section: Button - Go back
+                  - Section: Icon
+            - Section: Heading 1
+              - Text: "BUILDO"
+          - Section: Button - Notifications:margin
+            - Section: Button - Notifications
+                - Section: Icon
+    - Text: "Live Order Tracking"
+    - Text: "The order tracking screen provides real-time updates on delivery progress, helping users stay informed from dispatch to final delivery."
+      - Section: Driver Info Floating Card
+        - Section: Driver Info Floating Card:shadow
+            - Section: Driver Profile
+              - Text: "Marcus T."
+                - Section: Icon
+                - Text: "4.9 (120+ deliveries)"
+        - Section: Button - Call Driver
+            - Section: Icon
+    - Section: Vector 75
+    - Text: "Buildo ensures full transparency by letting users track their orders in real time with clear delivery updates."
+    - Text: "Order History"
+    - Text: "List of all past orders with status tags (Delivered, Cancelled). Each order shows items, total, and date. Reorder button for quick repeat purchases."
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+    - Text: "Address Management"
+    - Text: "Saved delivery locations for all active construction sites. Users can add, edit, or set a default address. Designed for contractors managing multiple sites."
+    - Section: mock 3
+      - Text: "Profile Screen"
+      - Text: "User account hub. Gives access to order history, address management, payment methods, settings, personal loan, help centre, and logout."
+        - Section: mock 4
+        - Section: Profile Screen 1
+        - Section: pop up@3x 1
+    - Text: "Buildo - From material search to site delivery, all in one place."
+      - Section: Free-Business-Card-Mockup
+        - Section: Texture
+        - Section: Shadow
+        - Section: Change-Color
+        - Section: Mockup
+          - Section: Mask group
+            - Section: Group
+              - Section: Vector
+            - Section: Change-This
+        - Section: Shadow
+        - Section: Shadow
+        - Section: Reflection
+      - Section: illustration
+      - Section: Rectangle 36
+      - Text: "Thank you for exploring Buildo."
+      - Section: Vector 78
+    - Text: "Design By"
+    - Text: "Rajesh Kanna "
+    - Text: "Splash Screen"
+    - Text: "The first frame a user sees. Displays the BUILDO logo on a yellow background. Sets the brand tone before the app loads."
+          - Section: mock 4
+          - Section: Profile Screen 1
+          - Section: pop up@3x 1
+          - Section: mock 4
+          - Section: Profile Screen 1
+          - Section: pop up@3x 1
+      - Section: Shadow R
+      - Text: " Login / Sign Up"
+      - Text: "The login/signup screen securely allows users to access the app using phone number, email, or social login, followed by OTP verification to confirm identity through a 4-digit code with a resend option."
+      - Section: mock 4
+      - Section: Profile Screen 1
+      - Section: pop up@3x 1
+        - Text: "Onboarding screens"
+      - Section: intro@3x@3x 1
+      - Text: "Let’s Dive Into the Interface"
