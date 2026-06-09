@@ -4,7 +4,9 @@ import Link from "next/link";
 import { ChevronLeft } from "lucide-react";
 import Image from "next/image";
 
-export default function BuildoCaseStudy() {
+import { ProjectData } from "@/lib/projects";
+
+export default function BuildoCaseStudy({ project }: { project?: ProjectData }) {
   return (
     <div className="min-h-screen bg-white text-black font-sans selection:bg-yellow-200 overflow-x-hidden relative">
       
