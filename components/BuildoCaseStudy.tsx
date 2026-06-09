@@ -22,15 +22,9 @@ export default function BuildoCaseStudy({ project }: { project?: ProjectData }) 
       <section className="w-full flex items-start justify-center pt-24 pb-24">
         <div className="w-full max-w-5xl px-4 md:px-8">
           <img 
-            src="/projects/buildo/case-study.svg" 
+            src="/projects/buildo/case-study.png" 
             alt="Buildo Case Study" 
             className="w-full h-auto block"
-            onError={(e) => {
-              // Fallback to PNG if SVG is not found
-              if (e.currentTarget.src.endsWith('.svg')) {
-                 e.currentTarget.src = "/projects/buildo/case-study.png";
-              }
-            }}
           />
         </div>
       </section>
