@@ -5,7 +5,7 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import ScrollTextReveal from "./ScrollTextReveal";
 import InfiniteMarquee from "./InfiniteMarquee";
 import FluidButton from "./ui/FluidButton";
-import InstagramPostCard from "./ui/InstagramPostCard";
+import IdCardProfile from "./ui/IdCardProfile";
 
 
 const InlineIcon = ({ type }: { type: "pencil" | "cursor" | "toggle" | "sparkle" }) => {
@@ -100,7 +100,7 @@ export default function WhoAmI() {
             viewport={{ once: true, amount: 0.3 }}
             transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1], delay: 0.1 }}
           >
-             <InstagramPostCard />
+             <IdCardProfile />
           </motion.div>
 
           <div className="relative">

@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, useScroll, useSpring, useTransform } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef, useEffect, useState } from "react";
 
 /* ── Floating parallax shapes ── */
@@ -110,10 +110,9 @@ export default function HomeParallaxScroll({ hero, next }: HomeParallaxScrollPro
     offset: ["start start", "end start"],
   });
 
-  const smooth = useSpring(scrollYProgress, { stiffness: 120, damping: 30, mass: 0.2 });
-  
-  // Use raw progress on mobile to avoid 1:1 touch scroll jitter, smooth on desktop
-  const activeProgress = isMobile ? scrollYProgress : smooth;
+  // Lenis already provides global smooth scrolling.
+  // Using useSpring on top of it causes double-smoothing and lag on initial frames.
+  const activeProgress = scrollYProgress;
 
   // Hero cinematic pull-away
   const heroScale = useTransform(activeProgress, [0, 1], [1, 0.92]);
